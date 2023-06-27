@@ -25,3 +25,47 @@ body {
     )
     rgb(var(--background-start-rgb));
 }
+
+/* .tree {
+  display: flex;
+  list-style-type: none;
+}
+
+.node {
+  display: flex;
+  flex-direction: column;
+  padding: 8px;
+  background-color: blue;
+  border-radius: 50px;
+  border: 1px solid #ddd;
+  text-align: center;
+}
+
+.subtree {
+  display: flex;
+  justify-content: space-around;
+  gap: 20px;
+}
+
+li {
+  display: flex;
+  flex-direction: column;
+} */
+
+
+.tree {
+  display: flex;
+  flex-direction: column;
+  list-style-type: none;
+}
+
+.node {
+  padding: 8px;
+  background-color: #5c21f2;
+  border: 1px solid #ddd;
+  margin-bottom: 4px;
+}
+
+.subtree {
+  margin-left: 16px;
+}
