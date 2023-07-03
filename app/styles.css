@@ -1,0 +1,46 @@
+body {
+    margin: 0;
+    display: flex;
+    min-height: 100vh;
+    align-items: stretch;
+  }
+  .node circle {
+    fill: rgb(248, 166, 0);
+    stroke: rgb(184, 37, 81);
+    stroke-width: 1.5px;
+  }
+  
+  .node text {
+    font-size: 11px;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    background-color: black;
+    fill: black;
+  }
+  
+  #root {
+    display: flex;
+    flex-grow: 1;
+  }
+  
+  .node {
+    cursor: pointer;
+  }
+  
+  path.link {
+    fill: none;
+    stroke: #2593b8;
+    stroke-width: 1.5px;
+  }
+  
+  body {
+    background-color: white;
+    overflow: hidden;
+  }
+  
+  span {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    color: #f4f4f4;
+    text-shadow: 0 1px 4px black;
+    float: right;
+  }
+  
