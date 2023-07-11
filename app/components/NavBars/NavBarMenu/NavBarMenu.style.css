@@ -1,0 +1,29 @@
+.nav {
+  margin: 10px;
+  display: flex;
+  gap: 8px;
+}
+
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  padding: 10px 20px;
+  background-color: #f3f7fe;
+  color: #3b82f6;
+  border: none;
+  border-radius: 8px;
+  transition: 0.3s;
+}
+
+.active {
+  background-color: #3b82f6;
+  color: #fff;
+}
+
+.button:hover {
+  background-color: #3b82f6;
+  box-shadow: 0 0 0 5px #3b83f65f;
+  color: #fff;
+}
