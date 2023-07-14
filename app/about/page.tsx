@@ -1,3 +1,5 @@
+import NodeTree from '../components/NodeTree/NodeTree';
+
 export default function About(): JSX.Element {
-  return <div>About</div>;
+  return <NodeTree></NodeTree>;
 }

@@ -1,0 +1,59 @@
+.inputGroup {
+  display: flex;
+  gap: 16px;
+}
+
+.inputGroup input {
+  font-size: 100%;
+  padding: 0.8em;
+  outline: none;
+  border: 2px solid rgb(200, 200, 200);
+  background-color: transparent;
+  border-radius: 20px;
+  width: 100%;
+}
+
+.inputGroup input:focus {
+  border-color: #3b82f6;
+  transition: 0.3s;
+  box-shadow: 0 0 0 5px #3b83f65f;
+}
+
+.inputGroup label {
+  position: absolute;
+  padding: 0.9em;
+  pointer-events: none;
+  transition: all 0.3s ease;
+  color: rgb(100, 100, 100);
+  transform-origin: top left;
+}
+
+.inputGroup input:valid + label,
+.inputGroup.focused label {
+  display: none;
+}
+
+.search-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  padding: 10px 20px;
+  background-color: #f3f7fe;
+  color: #3b82f6;
+  border: none;
+  border-radius: 8px;
+  transition: 0.3s;
+}
+
+.search-button:hover {
+  background-color: #3b82f6;
+  box-shadow: 0 0 0 5px #3b83f65f;
+  color: #fff;
+}
+
+.glass-and-search {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
