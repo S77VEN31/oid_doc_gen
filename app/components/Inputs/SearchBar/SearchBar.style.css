@@ -1,22 +1,29 @@
 .inputGroup {
   display: flex;
   gap: 16px;
+  flex-wrap: wrap;
 }
 
-.inputGroup input {
+.input-container {
   font-size: 100%;
   padding: 0.8em;
   outline: none;
   border: 2px solid rgb(200, 200, 200);
   background-color: transparent;
   border-radius: 20px;
-  width: 100%;
+  flex: 1;
+  transition: flex 0.3s ease-in-out, box-shadow 0.3s;
+  box-shadow: none;
 }
 
-.inputGroup input:focus {
+.input-container:focus {
   border-color: #3b82f6;
-  transition: 0.3s;
   box-shadow: 0 0 0 5px #3b83f65f;
+  transition: 0.3s;
+}
+
+.input-container-small {
+  flex: 0.8;
 }
 
 .inputGroup label {
@@ -35,21 +42,38 @@
 
 .search-button {
   display: flex;
+  flex: 0.2;
   justify-content: center;
   align-items: center;
-  text-decoration: none;
-  padding: 10px 20px;
+  padding: 10px 5px;
   background-color: #f3f7fe;
   color: #3b82f6;
   border: none;
   border-radius: 8px;
-  transition: 0.3s;
+}
+
+@keyframes fadeInOut {
+  0% {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.my-component {
+  animation-name: fadeInOut;
+  animation-duration: 0.3s;
+  animation-fill-mode: both;
 }
 
 .search-button:hover {
   background-color: #3b82f6;
   box-shadow: 0 0 0 5px #3b83f65f;
   color: #fff;
+  transition: 0.5s;
 }
 
 .glass-and-search {

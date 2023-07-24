@@ -19,14 +19,18 @@ const SearchBar: React.FC = () => {
   return (
     <div className="inputGroup">
       <input
+        className={`input-container ${
+          inputValue ? 'input-container-small' : ''
+        }`}
         type="text"
         onChange={handleInputChange}
         value={inputValue}
         required
         autoComplete="off"
       />
+
       {inputValue ? (
-        <button className="search-button">
+        <button className={'search-button my-component'}>
           <div className="glass-and-search">
             <FontAwesomeIcon icon={faSearch} />
             Search
