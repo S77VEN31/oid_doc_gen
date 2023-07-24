@@ -1,11 +1,5 @@
 'use client';
-import React, {
-  useState,
-  useRef,
-  useEffect,
-  useCallback,
-  useLayoutEffect,
-} from 'react';
+import React, { useState } from 'react';
 
 import Tree from 'react-tree-graph';
 import 'react-tree-graph/dist/style.css';
@@ -57,75 +51,9 @@ const findNode = (key, node = rootNode, parentPath = []) => {
   }
 };
 
-const useWindowInnerSize = () => {
-  const isClient = typeof window === 'object';
-
-  const [innerWidth, setInnerWidth] = useState(
-    isClient ? window.innerWidth : 0,
-  );
-  const [innerHeight, setInnerHeight] = useState(
-    isClient ? window.innerHeight : 0,
-  );
-
-  const handleResize = useCallback(() => {
-    setInnerWidth(window.innerWidth);
-    setInnerHeight(window.innerHeight);
-  }, []);
-
-  useEffect(() => {
-    if (isClient) {
-      window.addEventListener('resize', handleResize);
-    }
-
-    return () => {
-      if (isClient) {
-        window.removeEventListener('resize', handleResize);
-      }
-    };
-  }, [handleResize, isClient]);
-
-  return {
-    innerWidth,
-    innerHeight,
-  };
-};
-
 export default function NodeTree() {
   const [data, setData] = useState(cloneWithDepth(rootNode));
   const [path, setPath] = useState([rootNode.name]);
-  const [canvasWidth, setCanvasWidth] = useState(0);
-  const [canvasHeight, setCanvasHeight] = useState(0);
-  const { innerWidth, innerHeight } = useWindowInnerSize();
-  const canvasWrapper = useRef(null);
-  const setCanvasSize = useCallback(() => {
-    const { clientWidth, clientHeight } = canvasWrapper.current;
-
-    setCanvasWidth(clientWidth);
-    setCanvasHeight(clientHeight);
-  }, []);
-
-  useEffect(() => {
-    setCanvasSize();
-  }, [setCanvasSize]);
-
-  useLayoutEffect(() => {
-    setCanvasWidth(0);
-    setCanvasHeight(0);
-  }, [innerWidth, innerHeight]);
-
-  useEffect(() => {
-    let isMounted = true;
-
-    requestAnimationFrame(() => {
-      if (isMounted) {
-        setCanvasSize();
-      }
-    });
-
-    return () => {
-      isMounted = false;
-    };
-  }, [innerWidth, innerHeight, setCanvasSize]);
 
   const changeNode = ({ node, path }) => {
     setPath(path);
@@ -199,18 +127,17 @@ export default function NodeTree() {
           </button>
         ))}
       </div>
-      <div style={{ flexGrow: 1 }} ref={canvasWrapper}>
-        <Tree
-          animated
-          data={data}
-          width={canvasWidth}
-          height={canvasHeight}
-          nodeRadius={15}
-          svgProps={{ style: { backgroundColor: 'lightgray' } }}
-          gProps={{ className: 'node', onClick: handleClick }}
-          margins={{ top: 20, bottom: 10, left: 20, right: 200 }}
-        />
-      </div>
+
+      <Tree
+        animated
+        data={data}
+        width={600}
+        height={200}
+        nodeRadius={10}
+        svgProps={{ style: { backgroundColor: 'lightgray' } }}
+        gProps={{ className: 'node', onClick: handleClick }}
+        margins={{ top: 20, bottom: 10, left: 20, right: 200 }}
+      />
     </div>
   );
 }
