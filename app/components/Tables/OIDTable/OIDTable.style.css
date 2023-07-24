@@ -1,0 +1,53 @@
+/* Estilos para la tabla */
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  border: 1px solid #ccc;
+  padding: 8px;
+}
+
+/* Estilos para el menú lateral */
+.table-with-side-menu {
+  display: flex;
+}
+
+/*Table*/
+.table-container {
+  flex: 1;
+  transition: flex 0.3s ease-in-out;
+}
+.table-container-small {
+  flex: 0.3;
+}
+
+/*Lateral menu*/
+.side-menu {
+  background-color: #f0f0f0;
+  flex: 0;
+  transform: translateX(100%);
+  transition: flex 0.7s ease-in-out;
+
+}
+.side-menu-visible {
+  flex: 0.7;
+  transform: translateX(0%);
+}
+.side-menu-hidden {
+  flex: 0;
+}
+
+.close-button {
+  margin-bottom: 10px;
+  padding: 8px 16px;
+  background-color: #ccc;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+.close-button:hover {
+  background-color: #aaa;
+}
