@@ -13,6 +13,7 @@ td {
 /* Estilos para el menú lateral */
 .table-with-side-menu {
   display: flex;
+  gap: 10px;
 }
 
 /*Table*/
@@ -24,20 +25,41 @@ td {
   flex: 0.3;
 }
 
+.row {
+  background-color: var(--white);
+  transition: all 0.5s ease-in-out;
+}
+.row:hover {
+  
+  color: var(--white);
+  transition: 0.5s;
+  background-color: var(--primary-blue);
+  box-shadow: 0 0  10px var(--black);
+  transform: scale(1.03); 
+}
+
+@keyframes menuSlide {
+  0% {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.side-menu-render-animation {
+  animation-name: menuSlide;
+  animation-duration: 0.3s;
+  animation-fill-mode: both;
+}
+
 /*Lateral menu*/
 .side-menu {
   background-color: #f0f0f0;
-  flex: 0;
-  transform: translateX(100%);
-  transition: flex 0.7s ease-in-out;
-
-}
-.side-menu-visible {
   flex: 0.7;
-  transform: translateX(0%);
-}
-.side-menu-hidden {
-  flex: 0;
+  transition: 0.5s;
 }
 
 .close-button {

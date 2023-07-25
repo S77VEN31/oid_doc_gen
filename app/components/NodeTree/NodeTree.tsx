@@ -7,7 +7,7 @@ import 'react-tree-graph/dist/style.css';
 import './styles.css';
 import rootNode from './data';
 
-const DEFAULT_DEPTH = 5;
+const DEFAULT_DEPTH = 3;
 const cloneWithDepth = (object, depth = DEFAULT_DEPTH) => {
   if (depth === -1) return undefined;
   if (typeof object !== 'object') return object;
@@ -129,6 +129,7 @@ export default function NodeTree() {
       </div>
 
       <Tree
+        style={{ display: 'flex', flex: 1, minHeight: '200px' }}
         animated
         data={data}
         width={600}

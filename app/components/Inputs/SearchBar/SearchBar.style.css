@@ -8,7 +8,7 @@
   font-size: 100%;
   padding: 0.8em;
   outline: none;
-  border: 2px solid rgb(200, 200, 200);
+  border: 2px solid var(--disabled-gray-soft);
   background-color: transparent;
   border-radius: 20px;
   flex: 1;
@@ -17,8 +17,8 @@
 }
 
 .input-container:focus {
-  border-color: #3b82f6;
-  box-shadow: 0 0 0 5px #3b83f65f;
+  border-color: var(--primary-blue);
+  box-shadow: 0 0 0 5px var(--primary-blue-shadow);
   transition: 0.3s;
 }
 
@@ -26,54 +26,18 @@
   flex: 0.8;
 }
 
-.inputGroup label {
+.search-label {
   position: absolute;
   padding: 0.9em;
   pointer-events: none;
   transition: all 0.3s ease;
-  color: rgb(100, 100, 100);
+  color: var(--disabled-gray-strong);
   transform-origin: top left;
 }
 
-.inputGroup input:valid + label,
-.inputGroup.focused label {
+.input-container:valid + .search-label,
+.inputGroup.focused .search-label {
   display: none;
-}
-
-.search-button {
-  display: flex;
-  flex: 0.2;
-  justify-content: center;
-  align-items: center;
-  padding: 10px 5px;
-  background-color: #f3f7fe;
-  color: #3b82f6;
-  border: none;
-  border-radius: 8px;
-}
-
-@keyframes fadeInOut {
-  0% {
-    opacity: 0;
-    transform: translateX(100%);
-  }
-  100% {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-.my-component {
-  animation-name: fadeInOut;
-  animation-duration: 0.3s;
-  animation-fill-mode: both;
-}
-
-.search-button:hover {
-  background-color: #3b82f6;
-  box-shadow: 0 0 0 5px #3b83f65f;
-  color: #fff;
-  transition: 0.5s;
 }
 
 .glass-and-search {

@@ -2,3 +2,13 @@ body {
   display: flex;
   flex-direction: column;
 }
+
+:root {
+  --primary-blue: #3b82f6;
+  --primary-blue-shadow: #3b83f65f;
+  --secondary-blue: #cfdff9;
+  --white: #ffffff;
+  --disabled-gray-soft: rgb(200, 200, 200);
+  --disabled-gray-strong: rgb(100, 100, 100);
+  --black:rgba(0, 0, 0, 0.5);
+}
