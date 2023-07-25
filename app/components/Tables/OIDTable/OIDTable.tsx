@@ -54,13 +54,13 @@ const OIDTable = () => {
           <button className="close-button" onClick={handleMenuClose}>
             Close Menu
           </button>
-          <h2>Content for Item {selectedRow}</h2>
-          <p>{data.find((item) => item.id === selectedRow)?.description}</p>
+
           <NodeTree />
         </div>
       )}
     </div>
   );
 };
-
+// <h2>Content for Item {selectedRow}</h2>
+//<p>{data.find((item) => item.id === selectedRow)?.description}</p>
 export default OIDTable;
