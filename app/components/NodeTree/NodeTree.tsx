@@ -1,5 +1,5 @@
 'use client';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import Tree from 'react-tree-graph';
 import 'react-tree-graph/dist/style.css';
@@ -87,8 +87,34 @@ export default function NodeTree() {
     }
   };
 
+  const getContainerDimensions = () => {
+    const container = document.getElementById('tree-container'); // Make sure you set an id="tree-container" to the parent container
+    if (container) {
+      return {
+        width: container.offsetWidth,
+        height: container.offsetHeight,
+      };
+    }
+    return { width: 600, height: 400 }; // Fallback dimensions if the container is not found
+  };
+
+  const [dimensions, setDimensions] = useState(getContainerDimensions());
+
+  useEffect(() => {
+    const handleResize = () => {
+      setDimensions(getContainerDimensions());
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
   return (
     <div
+      id="tree-container"
       style={{
         flex: 1,
         display: 'flex',
@@ -125,8 +151,8 @@ export default function NodeTree() {
       <Tree
         animated
         data={data}
-        width={600}
-        height={200}
+        width={dimensions.width}
+        height={dimensions.height}
         nodeRadius={10}
         svgProps={{
           style: {
