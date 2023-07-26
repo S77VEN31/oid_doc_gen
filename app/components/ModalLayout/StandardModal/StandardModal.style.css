@@ -1,0 +1,18 @@
+.content-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  width: 80%;
+  height: 80%;
+  background-color: var(--white);
+  border-radius: 10px;
+  box-shadow: 0 0 10px var(--black);
+  overflow: hidden;
+  padding: 20px;
+}
+.close-button {
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: 10px;
+}
