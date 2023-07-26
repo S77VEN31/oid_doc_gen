@@ -2,7 +2,7 @@
 import './IconButton.style.css';
 
 interface SearchButtonProps {
-  buttonText: string;
+  buttonText?: string;
   icon: JSX.Element;
   handleOnClick: () => void;
 }
