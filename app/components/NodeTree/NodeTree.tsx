@@ -6,6 +6,9 @@ import 'react-tree-graph/dist/style.css';
 
 import './styles.css';
 import rootNode from './data';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import IconButton from '../Buttons/IconButton/IconButton';
 
 const DEFAULT_DEPTH = 3;
 const cloneWithDepth = (object, depth = DEFAULT_DEPTH) => {
@@ -92,22 +95,12 @@ export default function NodeTree() {
         flexDirection: 'column',
       }}
     >
-      <div>
-        <button
-          style={{
-            margin: '0',
-            border: 'none',
-            outline: 'none',
-            background: 'none',
-            padding: '0 0.1rem',
-            textDecoration: 'underline',
-            cursor: 'pointer',
-            color: 'blue',
-          }}
-          onClick={goBack}
-        >
-          Back
-        </button>
+      <div style={{ marginLeft: 30, display: 'flex' }}>
+        <IconButton
+          handleOnClick={goBack}
+          icon={<FontAwesomeIcon icon={faSearch} />}
+        />
+
         {path.map((pathItem, index) => (
           <button
             key={index}
@@ -117,6 +110,7 @@ export default function NodeTree() {
               outline: 'none',
               background: 'none',
               padding: '0 0.1rem',
+
               textDecoration: 'underline',
               cursor: data.name === pathItem ? '' : 'pointer',
               color: data.name === pathItem ? 'black' : 'blue',
@@ -129,13 +123,21 @@ export default function NodeTree() {
       </div>
 
       <Tree
-        style={{ display: 'flex', flex: 1, minHeight: '200px' }}
         animated
         data={data}
         width={600}
         height={200}
         nodeRadius={10}
-        svgProps={{ style: { backgroundColor: 'lightgray' } }}
+        svgProps={{
+          style: {
+            backgroundColor: 'lightgray',
+            flex: 1,
+            width: '100%',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+          },
+        }}
         gProps={{ className: 'node', onClick: handleClick }}
         margins={{ top: 20, bottom: 10, left: 20, right: 200 }}
       />

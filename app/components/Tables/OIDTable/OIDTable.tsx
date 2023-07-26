@@ -1,11 +1,14 @@
 'use client';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useRef } from 'react';
 import './OIDTable.style.css'; // Create this CSS file for styling
 import NodeTree from '../../NodeTree/NodeTree';
+import ModalDisplayer from '../../ModalLayout/ModalDisplayer/ModalDisplayer';
+import StandardModal from '../../ModalLayout/StandardModal/StandardModal';
 const OIDTable = () => {
   const [selectedRow, setSelectedRow] = useState(null);
-  const [menuVisible, setMenuVisible] = useState(false);
+  const [modal, setModal] = useState(false);
 
+  const tableRef = useRef(null);
   const data = [
     { id: 1, name: 'Item 1', description: 'Description for Item 1' },
     { id: 2, name: 'Item 2', description: 'Description for Item 2' },
@@ -15,21 +18,12 @@ const OIDTable = () => {
 
   const handleRowClick = (rowId) => {
     setSelectedRow(rowId);
-    setMenuVisible(true);
-  };
-
-  const handleMenuClose = () => {
-    setSelectedRow(null);
-    setMenuVisible(false);
+    setModal(true);
   };
 
   return (
     <div className="table-with-side-menu">
-      <div
-        className={`table-container ${
-          menuVisible ? 'table-container-small' : ''
-        }`}
-      >
+      <div ref={tableRef} className="table-container">
         <table>
           <thead>
             <tr>
@@ -49,14 +43,13 @@ const OIDTable = () => {
           </tbody>
         </table>
       </div>
-      {menuVisible && (
-        <div className={'side-menu side-menu-render-animation'}>
-          <button className="close-button" onClick={handleMenuClose}>
-            Close Menu
-          </button>
 
-          <NodeTree />
-        </div>
+      {modal && (
+        <ModalDisplayer setModal={setModal}>
+          <StandardModal>
+            <NodeTree />
+          </StandardModal>
+        </ModalDisplayer>
       )}
     </div>
   );
