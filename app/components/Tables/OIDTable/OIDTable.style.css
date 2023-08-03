@@ -28,16 +28,15 @@ td {
   background-color: var(--white);
   transition: all 0.5s ease-in-out;
 }
+
+.active {
+  background-color: var(--primary-blue)
+}
+
 .row:hover {
-  
   color: var(--white);
   transition: 0.5s;
   background-color: var(--primary-blue);
-  box-shadow: 0 0  10px var(--black);
-  transform: scale(1.03); 
+  box-shadow: 0 0 10px var(--black);
+  transform: scale(1.03);
 }
-
-
-
-
-

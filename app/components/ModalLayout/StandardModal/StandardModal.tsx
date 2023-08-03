@@ -1,7 +1,11 @@
+// React
 import React, { ReactNode } from 'react';
+// Styles
 import './StandardModal.style.css';
+// Icons
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import { faTimes } from '@fortawesome/free-solid-svg-icons';
+// Components
 import IconButton from '../../Buttons/IconButton/IconButton';
 interface StandardModalProps {
   children?: ReactNode;
@@ -20,12 +24,11 @@ const StandardModal: React.FC<StandardModalProps> = ({
       <div className="close-button">
         <IconButton
           handleOnClick={() => handleCloseModalButton()}
-          icon={<FontAwesomeIcon icon={faSearch} />}
+          icon={<FontAwesomeIcon icon={faTimes} />}
         />
       </div>
       {children}
     </div>
   );
 };
-
 export default StandardModal;

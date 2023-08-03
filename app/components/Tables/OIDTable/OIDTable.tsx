@@ -1,11 +1,15 @@
 'use client';
+// React
 import React, { useState, useRef } from 'react';
-import './OIDTable.style.css'; // Create this CSS file for styling
+// Styles
+import './OIDTable.style.css';
+// Components
 import NodeTree from '../../NodeTree/NodeTree';
 import ModalDisplayer from '../../ModalLayout/ModalDisplayer/ModalDisplayer';
 import StandardModal from '../../ModalLayout/StandardModal/StandardModal';
-const OIDTable = () => {
-  const [selectedRow, setSelectedRow] = useState(null);
+
+const OIDTable: React.FC = () => {
+  const [selectedRow, setSelectedRow] = useState<number | null>(null);
   const [modal, setModal] = useState(false);
 
   const tableRef = useRef(null);
@@ -16,7 +20,7 @@ const OIDTable = () => {
     // Add more data as needed
   ];
 
-  const handleRowClick = (rowId) => {
+  const handleRowClick = (rowId: number): void => {
     setSelectedRow(rowId);
     setModal(true);
   };
@@ -33,7 +37,7 @@ const OIDTable = () => {
           <tbody>
             {data.map((item) => (
               <tr
-                className="row"
+                className={`row ${selectedRow === item.id && 'active'}`}
                 key={item.id}
                 onClick={() => handleRowClick(item.id)}
               >
@@ -45,7 +49,7 @@ const OIDTable = () => {
       </div>
 
       {modal && (
-        <ModalDisplayer setModal={setModal}>
+        <ModalDisplayer setModal={setModal} setSelectedRow={setSelectedRow}>
           <StandardModal>
             <NodeTree />
           </StandardModal>
@@ -54,6 +58,4 @@ const OIDTable = () => {
     </div>
   );
 };
-// <h2>Content for Item {selectedRow}</h2>
-//<p>{data.find((item) => item.id === selectedRow)?.description}</p>
 export default OIDTable;

@@ -40,6 +40,27 @@
   display: none;
 }
 
+@keyframes buttonSlide {
+  0% {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.button-render-animation {
+  animation-name: buttonSlide;
+  animation-duration: 0.5s;
+  animation-fill-mode: both;
+}
+
+.search-button {
+  flex: 0.2
+}
+
 .glass-and-search {
   display: flex;
   align-items: center;

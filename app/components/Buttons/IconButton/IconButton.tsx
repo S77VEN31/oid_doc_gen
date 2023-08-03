@@ -1,26 +1,27 @@
 // Styles
 import './IconButton.style.css';
-
+import { classes } from '@/global/handleClassnames';
 interface SearchButtonProps {
   buttonText?: string;
-  icon: JSX.Element;
+  buttonClassname?: string | null;
+  icon?: JSX.Element;
+  key?: number;
   handleOnClick: () => void;
 }
 
 const IconButton: React.FC<SearchButtonProps> = ({
   buttonText,
+  buttonClassname = null,
   icon,
   handleOnClick,
 }) => {
   return (
     <button
       onClick={handleOnClick}
-      className={'search-button button-render-animation'}
+      className={classes(['button', buttonClassname])}
     >
-      <div className="glass-and-search">
-        {icon}
-        {buttonText}
-      </div>
+      {icon}
+      {buttonText}
     </button>
   );
 };
