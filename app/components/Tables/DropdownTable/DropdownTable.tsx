@@ -1,13 +1,13 @@
 'use client';
 // React
 import React from 'react';
-// Components
-import IconButton from '../../Buttons/IconButton/IconButton';
+// Styles
+import './DropdownTable.style.css';
 // Icons
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleDown, faAngleUp } from '@fortawesome/free-solid-svg-icons';
-// Styles
-import './DropdownTable.style.css';
+// Components
+import IconButton from '../../Buttons/IconButton/IconButton';
 
 const DropdownTable = ({ data }) => {
   return (
