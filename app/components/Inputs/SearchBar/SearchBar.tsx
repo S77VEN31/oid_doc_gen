@@ -1,13 +1,13 @@
 'use client';
 // React
 import { useState } from 'react';
-// Components
-import IconButton from '../../Buttons/IconButton/IconButton';
-// Libraries
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSearch } from '@fortawesome/free-solid-svg-icons';
 // Styles
 import './SearchBar.style.css';
+// Icons
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
+// Components
+import IconButton from '../../Buttons/IconButton/IconButton';
 
 const SearchBar: React.FC = () => {
   const [inputValue, setInputValue] = useState('');
@@ -30,6 +30,7 @@ const SearchBar: React.FC = () => {
       />
       {inputValue ? (
         <IconButton
+          buttonClassname="button-render-animation search-button"
           handleOnClick={() => console.log(inputValue)}
           buttonText="Search"
           icon={<FontAwesomeIcon icon={faSearch} />}

@@ -1,15 +1,18 @@
-import React, { ReactNode, MouseEvent, cloneElement } from 'react';
+// React
+import React, { ReactNode, MouseEvent, cloneElement, useRef } from 'react';
+// Styles
 import './ModalDisplayer.style.css';
 
 interface ModalDisplayerProps {
   children: ReactNode;
   setModal: (open: boolean) => void;
+  setSelectedRow: (open: number | null) => void;
 }
 
-import { useRef } from 'react';
 const ModalDisplayer: React.FC<ModalDisplayerProps> = ({
   children,
   setModal,
+  setSelectedRow,
 }) => {
   const menuRef = useRef(null);
 
@@ -23,6 +26,7 @@ const ModalDisplayer: React.FC<ModalDisplayerProps> = ({
     menuRef.current.classList.add('hide-animation');
     setTimeout(() => {
       setModal(false);
+      setSelectedRow(null);
     }, 300);
   };
 
@@ -43,5 +47,4 @@ const ModalDisplayer: React.FC<ModalDisplayerProps> = ({
     </div>
   );
 };
-
 export default ModalDisplayer;

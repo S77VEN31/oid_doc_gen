@@ -1,14 +1,18 @@
 'use client';
+// React
 import React, { useState, useEffect } from 'react';
 
 import Tree from 'react-tree-graph';
 import 'react-tree-graph/dist/style.css';
-
+// Styles
 import './styles.css';
-import rootNode from './data';
+// Icons
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
+// Components
 import IconButton from '../Buttons/IconButton/IconButton';
+// Data
+import rootNode from './data';
 
 const DEFAULT_DEPTH = 3;
 const cloneWithDepth = (object, depth = DEFAULT_DEPTH) => {
@@ -119,32 +123,21 @@ export default function NodeTree() {
         flex: 1,
         display: 'flex',
         flexDirection: 'column',
+        overflowX: 'auto',
       }}
     >
-      <div style={{ marginLeft: 30, display: 'flex' }}>
+      <div style={{ marginLeft: 30, display: 'flex', gap: 8 }}>
         <IconButton
           handleOnClick={goBack}
-          icon={<FontAwesomeIcon icon={faSearch} />}
+          icon={<FontAwesomeIcon icon={faArrowLeft} />}
         />
 
         {path.map((pathItem, index) => (
-          <button
+          <IconButton
+            buttonText={pathItem}
             key={index}
-            style={{
-              margin: '0',
-              border: 'none',
-              outline: 'none',
-              background: 'none',
-              padding: '0 0.1rem',
-
-              textDecoration: 'underline',
-              cursor: data.name === pathItem ? '' : 'pointer',
-              color: data.name === pathItem ? 'black' : 'blue',
-            }}
-            onClick={() => changeNode(findNode(pathItem))}
-          >
-            {pathItem}
-          </button>
+            handleOnClick={goBack}
+          />
         ))}
       </div>
 

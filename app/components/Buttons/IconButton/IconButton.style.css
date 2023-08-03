@@ -1,25 +1,8 @@
-@keyframes buttonSlide {
-  0% {
-    opacity: 0;
-    transform: translateX(100%);
-  }
-  100% {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-.button-render-animation {
-  animation-name: buttonSlide;
-  animation-duration: 0.3s;
-  animation-fill-mode: both;
-}
-
-.search-button {
+.button {
   display: flex;
-  flex: 0.2;
   justify-content: center;
   align-items: center;
+  gap: 8px;
   padding: 10px 10px;
   background-color: var(--secondary-blue);
   color: var(--primary-blue);
@@ -28,7 +11,7 @@
   transition: 0.5s;
 }
 
-.search-button:hover {
+.button:hover {
   background-color: var(--primary-blue);
   box-shadow: 0 0 0 5px var(--primary-blue-shadow);
   color: var(--white);
@@ -39,4 +22,3 @@
   background-color: var(--primary-blue);
   color: var(--white);
 }
-
