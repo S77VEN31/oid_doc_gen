@@ -28,7 +28,7 @@ const OIDTable: React.FC = () => {
   return (
     <div className="table-with-side-menu">
       <div ref={tableRef} className="table-container">
-        <table>
+        <table className="oid-table">
           <thead>
             <tr>
               <th>Resultados</th>
