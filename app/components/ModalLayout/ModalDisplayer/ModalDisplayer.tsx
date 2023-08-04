@@ -1,6 +1,10 @@
-// React
-import React, { ReactNode, MouseEvent, cloneElement, useRef } from 'react';
-// Styles
+import React, {
+  ReactNode,
+  MouseEvent,
+  KeyboardEvent,
+  cloneElement,
+  useRef,
+} from 'react';
 import './ModalDisplayer.style.css';
 
 interface ModalDisplayerProps {
@@ -14,7 +18,7 @@ const ModalDisplayer: React.FC<ModalDisplayerProps> = ({
   setModal,
   setSelectedRow,
 }) => {
-  const menuRef = useRef(null);
+  const menuRef = useRef<HTMLDivElement | null>(null);
 
   const handleClickOut = (event: MouseEvent<HTMLDivElement>): void => {
     if (event.target === event.currentTarget) {
@@ -22,12 +26,20 @@ const ModalDisplayer: React.FC<ModalDisplayerProps> = ({
     }
   };
 
+  const handleKeyDown = (event: KeyboardEvent<HTMLDivElement>): void => {
+    if (event.key === 'Enter' || event.key === ' ') {
+      handleCloseModal();
+    }
+  };
+
   const handleCloseModal = (): void => {
-    menuRef.current.classList.add('hide-animation');
-    setTimeout(() => {
-      setModal(false);
-      setSelectedRow(null);
-    }, 300);
+    if (menuRef.current) {
+      menuRef.current.classList.add('hide-animation');
+      setTimeout(() => {
+        setModal(false);
+        setSelectedRow(null);
+      }, 300);
+    }
   };
 
   const childWithProps = cloneElement(
@@ -42,9 +54,13 @@ const ModalDisplayer: React.FC<ModalDisplayerProps> = ({
       ref={menuRef}
       className={'modal-displayer render-animation'}
       onClick={handleClickOut}
+      onKeyDown={handleKeyDown} // Add the keydown event listener
+      role="button" // Add the role attribute to indicate that it's an interactive element
+      tabIndex={0} // Add the tabIndex to make the element focusable
     >
       {childWithProps}
     </div>
   );
 };
+
 export default ModalDisplayer;

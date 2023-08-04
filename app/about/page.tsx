@@ -1,4 +1,4 @@
-import NodeTree from '../components/NodeTree/NodeTree';
+//import NodeTree from '../components/NodeTree/NodeTree';
 import DropdownTable from '../components/Tables/DropdownTable/DropdownTable';
 export default function About(): JSX.Element {
   const jsonData = {

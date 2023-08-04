@@ -1,15 +1,23 @@
 'use client';
-// React
 import React from 'react';
-// Styles
 import './DropdownTable.style.css';
-// Icons
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleDown, faAngleUp } from '@fortawesome/free-solid-svg-icons';
-// Components
 import IconButton from '../../Buttons/IconButton/IconButton';
 
-const DropdownTable = ({ data }) => {
+interface TreeNode {
+  id?: number;
+  name: string;
+  oid: string; // Assuming oid is a string, you can adjust it accordingly
+  class: string; // Assuming class is a string, you can adjust it accordingly
+  children: TreeNode[];
+}
+
+interface DropdownTableProps {
+  data: TreeNode[];
+}
+
+const DropdownTable: React.FC<DropdownTableProps> = ({ data }) => {
   return (
     <table className="main-dropdowntable">
       <thead>
@@ -28,7 +36,11 @@ const DropdownTable = ({ data }) => {
   );
 };
 
-const TableRow = ({ item }) => {
+interface TableRowProps {
+  item: TreeNode;
+}
+
+const TableRow: React.FC<TableRowProps> = ({ item }) => {
   const [isExpanded, setIsExpanded] = React.useState(false);
 
   const toggleExpansion = () => {
@@ -43,17 +55,17 @@ const TableRow = ({ item }) => {
             {item.children.length > 0 && (
               <IconButton
                 buttonClassname={`dropdown-button ${
-                  isExpanded && 'dropdown-button-active'
+                  isExpanded ? 'dropdown-button-active' : ''
                 }`}
                 icon={
                   isExpanded ? (
-                    <FontAwesomeIcon icon={faAngleDown}></FontAwesomeIcon>
+                    <FontAwesomeIcon icon={faAngleUp} />
                   ) : (
-                    <FontAwesomeIcon icon={faAngleUp}></FontAwesomeIcon>
+                    <FontAwesomeIcon icon={faAngleDown} />
                   )
                 }
                 handleOnClick={toggleExpansion}
-              ></IconButton>
+              />
             )}
             {item.name}
           </div>

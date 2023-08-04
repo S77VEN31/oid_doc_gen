@@ -1,8 +1,9 @@
 'use client';
+
 // React
 import React, { useState, useEffect } from 'react';
-
-import Tree from 'react-tree-graph';
+// @ts-ignore
+import { AnimatedTree } from 'react-tree-graph';
 import 'react-tree-graph/dist/style.css';
 // Styles
 import './styles.css';
@@ -15,6 +16,7 @@ import IconButton from '../Buttons/IconButton/IconButton';
 import rootNode from './data';
 
 const DEFAULT_DEPTH = 3;
+// @ts-ignore
 const cloneWithDepth = (object, depth = DEFAULT_DEPTH) => {
   if (depth === -1) return undefined;
   if (typeof object !== 'object') return object;
@@ -35,13 +37,14 @@ const cloneWithDepth = (object, depth = DEFAULT_DEPTH) => {
     const clonedValue = cloneWithDepth(object[key], depth - 1);
 
     if (clonedValue !== undefined) {
+      // @ts-ignore
       clone[key] = clonedValue;
     }
   }
 
   return clone;
 };
-
+// @ts-ignore
 const findNode = (key, node = rootNode, parentPath = []) => {
   const path = [...parentPath, node.name];
 
@@ -51,6 +54,7 @@ const findNode = (key, node = rootNode, parentPath = []) => {
 
   if (Array.isArray(node.children)) {
     for (const child of node.children) {
+      // @ts-ignore
       const found = findNode(key, child, path);
 
       if (found) return found;
@@ -61,12 +65,12 @@ const findNode = (key, node = rootNode, parentPath = []) => {
 export default function NodeTree() {
   const [data, setData] = useState(cloneWithDepth(rootNode));
   const [path, setPath] = useState([rootNode.name]);
-
+  // @ts-ignore
   const changeNode = ({ node, path }) => {
     setPath(path);
     setData(node);
   };
-
+  // @ts-ignore
   const handleClick = (_, key) => {
     const foundNode = findNode(key);
     if (foundNode) {
@@ -141,7 +145,7 @@ export default function NodeTree() {
         ))}
       </div>
 
-      <Tree
+      <AnimatedTree
         animated
         data={data}
         width={dimensions.width}
