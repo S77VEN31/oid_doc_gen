@@ -17,7 +17,7 @@ const NavBarMenu: React.FC = () => {
     if (savedOption) {
       setOption(savedOption);
     }
-  }, {});
+  }, []);
 
   useEffect(() => {
     // Store the 'option' state in localStorage whenever it changes
