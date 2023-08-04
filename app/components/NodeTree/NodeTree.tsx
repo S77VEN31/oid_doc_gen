@@ -112,7 +112,7 @@ export default function NodeTree() {
     const handleResize = () => {
       setDimensions(getContainerDimensions());
     };
-
+    handleResize();
     window.addEventListener('resize', handleResize);
 
     return () => {
