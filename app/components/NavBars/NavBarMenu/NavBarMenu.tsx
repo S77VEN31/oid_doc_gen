@@ -9,14 +9,18 @@ import { classes } from '@/global/handleClassnames';
 import './NavBarMenu.style.css';
 
 const NavBarMenu: React.FC = () => {
-  const [option, setOption] = useState(() => {
-    // Intenta obtener el valor de 'option' desde localStorage al cargar el componente
-    const savedOption = localStorage.getItem('selectedOption');
-    return savedOption ? savedOption : 'home'; // Si no hay valor, utiliza 'home' como valor predeterminado
-  });
+  const [option, setOption] = useState<string>('home'); // Default value
 
   useEffect(() => {
-    // Almacena el estado 'option' en localStorage cada vez que cambie
+    // Read 'selectedOption' from localStorage and update the state when the component is mounted on the client side
+    const savedOption = localStorage.getItem('selectedOption');
+    if (savedOption) {
+      setOption(savedOption);
+    }
+  }, {});
+
+  useEffect(() => {
+    // Store the 'option' state in localStorage whenever it changes
     localStorage.setItem('selectedOption', option);
   }, [option]);
   const options = [
