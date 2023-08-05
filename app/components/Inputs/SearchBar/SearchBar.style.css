@@ -27,7 +27,7 @@
 }
 
 .search-label {
-  position: absolute;
+  position: fixed;
   padding: 0.9em;
   pointer-events: none;
   transition: all 0.3s ease;

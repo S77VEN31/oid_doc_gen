@@ -1,14 +1,21 @@
 
   .node circle {
-    fill: rgb(248, 166, 0);
-    stroke: rgb(184, 37, 81);
+    fill: var(--secondary-blue);
+    stroke: var(--primary-blue);
     stroke-width: 1.5px;
   }
-  
+
+  .node circle:hover {
+    fill: var(--primary-blue);
+
+  }
+
   .node text {
-    font-size: 11px;
+    
+    font-size: 12px;
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     background-color: black;
+    word-wrap: break-all;
     fill: black;
   }
   
@@ -23,19 +30,22 @@
   
   path.link {
     fill: none;
-    stroke: #2593b8;
+    stroke:var(--primary-blue);
     stroke-width: 1.5px;
   }
   
   body {
-    background-color: white;
+    background-color: var(--white);
     overflow: hidden;
   }
   
   span {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    color: #f4f4f4;
+    color: var(--white);
     text-shadow: 0 1px 4px black;
     float: right;
+  }
+  .navigation-button .active {
+    background-color: var(--primary-blue);
   }
   

@@ -26,22 +26,16 @@ const SearchBar: React.FC = () => {
         onChange={handleInputChange}
         value={inputValue}
         required
+        placeholder="Search"
         autoComplete="off"
       />
-      {inputValue ? (
+      {inputValue && (
         <IconButton
           buttonClassname="button-render-animation search-button"
           handleOnClick={() => console.log(inputValue)}
           buttonText="Search"
           icon={<FontAwesomeIcon icon={faSearch} />}
         />
-      ) : (
-        <label className="search-label" htmlFor="name">
-          <div className="glass-and-search">
-            <FontAwesomeIcon icon={faSearch} />
-            Search
-          </div>
-        </label>
       )}
     </div>
   );

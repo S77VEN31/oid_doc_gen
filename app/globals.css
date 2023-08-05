@@ -14,3 +14,24 @@ body {
   --disabled-gray-strong: rgb(100, 100, 100);
   --black:rgba(0, 0, 0, 0.5);
 }
+
+/* Hide the default scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: var(--primary-blue);
+  border-radius: 8px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background:var(--secondary-blue); 
+}
+
+/* Hide scrollbar track */
+::-webkit-scrollbar-track {
+  background: transparent;
+}

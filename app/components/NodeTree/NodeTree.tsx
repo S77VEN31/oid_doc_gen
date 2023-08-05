@@ -65,13 +65,14 @@ const findNode = (key, node = rootNode, parentPath = []) => {
 export default function NodeTree() {
   const [data, setData] = useState(cloneWithDepth(rootNode));
   const [path, setPath] = useState([rootNode.name]);
+  const [selectedButtonIndex, setSelectedButtonIndex] = useState(-1);
   // @ts-ignore
   const changeNode = ({ node, path }) => {
     setPath(path);
     setData(node);
   };
   // @ts-ignore
-  const handleClick = (_, key) => {
+  const handleClick = (index, key) => {
     const foundNode = findNode(key);
     if (foundNode) {
       changeNode(foundNode);
@@ -119,6 +120,10 @@ export default function NodeTree() {
       window.removeEventListener('resize', handleResize);
     };
   }, []);
+  useEffect(() => {
+    // Update selectedButtonIndex when the path changes
+    setSelectedButtonIndex(path.length - 1);
+  }, [path]);
 
   return (
     <div
@@ -127,10 +132,19 @@ export default function NodeTree() {
         flex: 1,
         display: 'flex',
         flexDirection: 'column',
-        overflowX: 'auto',
+        overflow: 'hidden',
       }}
     >
-      <div style={{ marginLeft: 30, display: 'flex', gap: 8 }}>
+      <div
+        style={{
+          minHeight: 'fit-content',
+          padding: 8,
+          display: 'flex',
+          gap: 8,
+          paddingTop: 8,
+          overflowX: 'auto',
+        }}
+      >
         <IconButton
           handleOnClick={goBack}
           icon={<FontAwesomeIcon icon={faArrowLeft} />}
@@ -140,30 +154,40 @@ export default function NodeTree() {
           <IconButton
             buttonText={pathItem}
             key={index}
-            handleOnClick={goBack}
+            handleOnClick={() => handleClick(index, pathItem)}
+            buttonClassname={`navigation-button ${
+              selectedButtonIndex === index && 'active'
+            }`}
           />
         ))}
       </div>
-
-      <AnimatedTree
-        animated
-        data={data}
-        width={dimensions.width}
-        height={dimensions.height}
-        nodeRadius={10}
-        svgProps={{
-          style: {
-            backgroundColor: 'lightgray',
-            flex: 1,
-            width: '100%',
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-          },
-        }}
-        gProps={{ className: 'node', onClick: handleClick }}
-        margins={{ top: 20, bottom: 10, left: 20, right: 200 }}
-      />
+      <div style={{ flex: 1, overflow: 'auto' }}>
+        <AnimatedTree
+          animated
+          data={data}
+          width={dimensions.width}
+          height={dimensions.height}
+          nodeProps={{ r: 10 }}
+          svgProps={{
+            style: {
+              flex: 1,
+              width: '100%',
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+            },
+          }}
+          textProps={{
+            x: -10,
+            y: -20,
+          }}
+          gProps={{
+            className: 'node',
+            onClick: handleClick,
+          }}
+          margins={{ top: 20, bottom: 20, left: 20, right: 200 }}
+        />
+      </div>
     </div>
   );
 }
