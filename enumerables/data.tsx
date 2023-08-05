@@ -1,4 +1,4 @@
-export default {
+export const treeData = {
   name: 'hpe',
   oid: '1.3.6.1.4.1.47196',
   class: 'objectidentity',
