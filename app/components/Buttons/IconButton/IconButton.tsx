@@ -1,6 +1,8 @@
 // Styles
 import './IconButton.style.css';
+// Global
 import { classes } from '@/global/handleClassnames';
+
 interface SearchButtonProps {
   buttonText?: string;
   buttonClassname?: string | null;

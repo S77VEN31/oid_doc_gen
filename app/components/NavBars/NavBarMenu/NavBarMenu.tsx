@@ -3,10 +3,12 @@
 import React, { useState, useEffect } from 'react';
 // Next
 import Link from 'next/link';
-// Global
-import { classes } from '@/global/handleClassnames';
 // Styles
 import './NavBarMenu.style.css';
+// Global
+import { classes } from '@/global/handleClassnames';
+// Enumerables
+import { navBarOptions } from '@/enumerables/navBarOptions';
 
 const NavBarMenu: React.FC = () => {
   const [option, setOption] = useState<string>('home'); // Default value
@@ -23,27 +25,11 @@ const NavBarMenu: React.FC = () => {
     // Store the 'option' state in localStorage whenever it changes
     localStorage.setItem('selectedOption', option);
   }, [option]);
-  const options = [
-    {
-      children: 'aruba',
-      href: '/',
-      key: 'home',
-    },
-    {
-      children: 'search',
-      href: '/search',
-      key: 'search',
-    },
-    {
-      children: 'about',
-      href: '/about',
-      key: 'about',
-    },
-  ];
+
   return (
     <nav className="nav">
-      {options.map(({ key, ...props }) => {
-        const className = classes([`button ${option === key ? 'active' : ''}`]);
+      {navBarOptions.map(({ key, ...props }) => {
+        const className = classes([`button ${option === key && 'active'}`]);
         const onClick = (): void => setOption(key);
         return (
           <Link {...props} key={key} className={className} onClick={onClick} />

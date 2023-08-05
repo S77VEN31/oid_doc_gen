@@ -1,15 +1,19 @@
 'use client';
+// React
 import React from 'react';
+// Style
 import './DropdownTable.style.css';
+// Icons
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleDown, faAngleUp } from '@fortawesome/free-solid-svg-icons';
+// Components
 import IconButton from '../../Buttons/IconButton/IconButton';
 
 interface TreeNode {
   id?: number;
   name: string;
-  oid: string; // Assuming oid is a string, you can adjust it accordingly
-  class: string; // Assuming class is a string, you can adjust it accordingly
+  oid: string;
+  class: string;
   children: TreeNode[];
 }
 
@@ -55,7 +59,7 @@ const TableRow: React.FC<TableRowProps> = ({ item }) => {
             {item.children.length > 0 && (
               <IconButton
                 buttonClassname={`dropdown-button ${
-                  isExpanded ? 'dropdown-button-active' : ''
+                  isExpanded && 'dropdown-button-active'
                 }`}
                 icon={
                   isExpanded ? (
@@ -93,5 +97,4 @@ const TableRow: React.FC<TableRowProps> = ({ item }) => {
     </>
   );
 };
-
 export default DropdownTable;

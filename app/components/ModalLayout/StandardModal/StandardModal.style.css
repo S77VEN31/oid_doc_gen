@@ -11,6 +11,7 @@
   overflow-y: scroll;
   padding: 16px 16px 16px 16px;
 }
+
 .buttons-container {
   display: flex;
   flex-direction: row;

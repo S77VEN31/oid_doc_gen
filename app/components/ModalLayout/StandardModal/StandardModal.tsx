@@ -24,9 +24,11 @@ const StandardModal: React.FC<StandardModalProps> = ({
   handleCloseModal,
 }) => {
   const [child, setChild] = useState(0);
+
   const handleCloseModalButton = (): void => {
     handleCloseModal && handleCloseModal();
   };
+
   return (
     <div className="content-container">
       <div className="buttons-container">

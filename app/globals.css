@@ -36,3 +36,13 @@ body {
 ::-webkit-scrollbar-track {
   background: transparent;
 }
+
+.HOME-PAGE {
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+}

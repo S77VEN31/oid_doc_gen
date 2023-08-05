@@ -10,14 +10,12 @@ table {
   padding: 8px;
 }
 
-/* Estilos para el menú lateral */
 .table-with-side-menu {
   display: flex;
   gap: 10px;
   flex-wrap: wrap;
 }
 
-/*Table*/
 .table-container {
   flex: 1;
   flex-direction: row;
