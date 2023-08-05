@@ -1,19 +1,16 @@
 'use client';
-
 // React
 import React, { useState, useEffect } from 'react';
 // @ts-ignore
 import { AnimatedTree } from 'react-tree-graph';
 import 'react-tree-graph/dist/style.css';
 // Styles
-import './styles.css';
+import './NodeTree.style.css';
 // Icons
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 // Components
 import IconButton from '../Buttons/IconButton/IconButton';
-// Data
-import rootNode from './data';
 
 const DEFAULT_DEPTH = 3;
 // @ts-ignore
@@ -44,27 +41,28 @@ const cloneWithDepth = (object, depth = DEFAULT_DEPTH) => {
 
   return clone;
 };
-// @ts-ignore
-const findNode = (key, node = rootNode, parentPath = []) => {
-  const path = [...parentPath, node.name];
 
-  if (node.name === key) {
-    return { node: cloneWithDepth(node), path };
-  }
+export default function NodeTree({ treeData }) {
+  const [data, setData] = useState(cloneWithDepth(treeData));
+  const [path, setPath] = useState([treeData.name]);
+  // @ts-ignore
+  const findNode = (key, node = treeData, parentPath = []) => {
+    const path = [...parentPath, node.name];
 
-  if (Array.isArray(node.children)) {
-    for (const child of node.children) {
-      // @ts-ignore
-      const found = findNode(key, child, path);
-
-      if (found) return found;
+    if (node.name === key) {
+      return { node: cloneWithDepth(node), path };
     }
-  }
-};
 
-export default function NodeTree() {
-  const [data, setData] = useState(cloneWithDepth(rootNode));
-  const [path, setPath] = useState([rootNode.name]);
+    if (Array.isArray(node.children)) {
+      for (const child of node.children) {
+        // @ts-ignore
+        const found = findNode(key, child, path);
+
+        if (found) return found;
+      }
+    }
+  };
+
   const [selectedButtonIndex, setSelectedButtonIndex] = useState(-1);
   // @ts-ignore
   const changeNode = ({ node, path }) => {

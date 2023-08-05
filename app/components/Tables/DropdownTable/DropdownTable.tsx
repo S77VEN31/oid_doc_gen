@@ -14,10 +14,10 @@ interface TreeNode {
 }
 
 interface DropdownTableProps {
-  data: TreeNode[];
+  treeData: TreeNode[];
 }
 
-const DropdownTable: React.FC<DropdownTableProps> = ({ data }) => {
+const DropdownTable: React.FC<DropdownTableProps> = ({ treeData }) => {
   return (
     <table className="main-dropdowntable">
       <thead>
@@ -28,7 +28,7 @@ const DropdownTable: React.FC<DropdownTableProps> = ({ data }) => {
         </tr>
       </thead>
       <tbody>
-        {data.map((item) => (
+        {treeData.map((item) => (
           <TableRow key={item.oid} item={item} />
         ))}
       </tbody>

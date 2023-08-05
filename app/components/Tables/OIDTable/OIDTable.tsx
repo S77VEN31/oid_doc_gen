@@ -7,6 +7,9 @@ import './OIDTable.style.css';
 import NodeTree from '../../NodeTree/NodeTree';
 import ModalDisplayer from '../../ModalLayout/ModalDisplayer/ModalDisplayer';
 import StandardModal from '../../ModalLayout/StandardModal/StandardModal';
+import DropdownTable from '../DropdownTable/DropdownTable';
+
+import { treeData } from '../../../../enumerables/data';
 
 const OIDTable: React.FC = () => {
   const [selectedRow, setSelectedRow] = useState<number | null>(null);
@@ -19,7 +22,13 @@ const OIDTable: React.FC = () => {
     { id: 3, name: 'Item 3', description: 'Description for Item 3' },
     // Add more data as needed
   ];
-
+  const modalContent = [
+    { name: 'NodeTree', component: <NodeTree treeData={treeData} /> },
+    {
+      name: 'DropdownTable',
+      component: <DropdownTable treeData={treeData.children} />,
+    },
+  ];
   const handleRowClick = (rowId: number): void => {
     setSelectedRow(rowId);
     setModal(true);
@@ -50,9 +59,7 @@ const OIDTable: React.FC = () => {
 
       {modal && (
         <ModalDisplayer setModal={setModal} setSelectedRow={setSelectedRow}>
-          <StandardModal>
-            <NodeTree />
-          </StandardModal>
+          <StandardModal>{modalContent}</StandardModal>
         </ModalDisplayer>
       )}
     </div>
