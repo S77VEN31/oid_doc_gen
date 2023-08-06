@@ -11,15 +11,23 @@ import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import { AnimatedTree } from 'react-tree-graph';
 import IconButton from '../Buttons/IconButton/IconButton';
 
+type ContainerDimensions = {
+  width: number;
+  height: number;
+};
+
 const DEFAULT_DEPTH = 3;
 // @ts-ignore
 const cloneWithDepth = (object, depth = DEFAULT_DEPTH) => {
   if (depth === -1) return undefined;
   if (typeof object !== 'object') return object;
   if (Array.isArray(object)) {
-    return object
-      .map((val) => cloneWithDepth(val, depth - 1))
-      .filter((val) => val !== undefined);
+    return (
+      object
+        // @ts-ignore
+        .map((val) => cloneWithDepth(val, depth - 1))
+        .filter((val) => val !== undefined)
+    );
   }
   const clone = {};
   for (const key in object) {
@@ -35,7 +43,7 @@ const cloneWithDepth = (object, depth = DEFAULT_DEPTH) => {
   return clone;
 };
 // @ts-ignore
-export default function NodeTree({ treeData }) {
+export default function NodeTree({ treeData }): JSX.Element {
   const [data, setData] = useState(cloneWithDepth(treeData));
   const [path, setPath] = useState([treeData.name]);
   const [selectedButtonIndex, setSelectedButtonIndex] = useState(-1);
@@ -54,19 +62,19 @@ export default function NodeTree({ treeData }) {
     }
   };
   // @ts-ignore
-  const changeNode = ({ node, path }) => {
+  const changeNode = ({ node, path }): void => {
     setPath(path);
     setData(node);
   };
   // @ts-ignore
-  const handleClick = (index, key) => {
+  const handleClick = (_, key): void => {
     const foundNode = findNode(key);
     if (foundNode) {
       changeNode(foundNode);
     }
   };
 
-  const goBack = () => {
+  const goBack = (): void => {
     if (path.length <= 1) {
       return;
     }
@@ -78,7 +86,7 @@ export default function NodeTree({ treeData }) {
     }
   };
 
-  const getContainerDimensions = () => {
+  const getContainerDimensions = (): ContainerDimensions => {
     const container = document.getElementById('tree-container');
     if (container) {
       return {
@@ -90,7 +98,7 @@ export default function NodeTree({ treeData }) {
   };
   const [dimensions, setDimensions] = useState(getContainerDimensions());
   useEffect(() => {
-    const handleResize = () => {
+    const handleResize = (): void => {
       setDimensions(getContainerDimensions());
     };
     handleResize();
@@ -164,7 +172,7 @@ export default function NodeTree({ treeData }) {
             className: 'node',
             onClick: handleClick,
           }}
-          margins={{ top: 20, bottom: 20, left: 20, right: 200 }}
+          margins={{ top: 20, bottom: 20, left: 20, right: 300 }}
         />
       </div>
     </div>
