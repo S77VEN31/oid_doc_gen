@@ -13,6 +13,9 @@ body {
   --disabled-gray-soft: rgb(200, 200, 200);
   --disabled-gray-strong: rgb(100, 100, 100);
   --black:rgba(0, 0, 0, 0.5);
+  --primary-green: #61CA87;
+  --primary-green-shadow: #61CA87;
+  --secondary-green: #007F4E;
 }
 
 /* Hide the default scrollbar */
