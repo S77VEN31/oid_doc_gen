@@ -8,8 +8,11 @@
   background-color: var(--white);
   border-radius: 10px;
   box-shadow: 0 0 10px var(--black);
-  overflow-y: scroll;
   padding: 16px 16px 16px 16px;
+}
+
+.child-container {
+  overflow-y: scroll;
 }
 
 .buttons-container {
