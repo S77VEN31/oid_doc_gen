@@ -1,6 +1,6 @@
 'use client';
 // React
-import React from 'react';
+import React, { useState } from 'react';
 // Style
 import './DropdownTable.style.css';
 // Icons
@@ -45,9 +45,9 @@ interface TableRowProps {
 }
 
 const TableRow: React.FC<TableRowProps> = ({ item }) => {
-  const [isExpanded, setIsExpanded] = React.useState(false);
+  const [isExpanded, setIsExpanded] = useState(false);
 
-  const toggleExpansion = () => {
+  const toggleExpansion = (): void => {
     setIsExpanded(!isExpanded);
   };
 
