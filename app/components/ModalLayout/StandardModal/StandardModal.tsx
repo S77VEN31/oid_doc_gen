@@ -46,7 +46,7 @@ const StandardModal: React.FC<StandardModalProps> = ({
           />
         ))}
       </div>
-      <div className="child-container">{children[child].component}</div>
+      {children[child].component}
     </div>
   );
 };
