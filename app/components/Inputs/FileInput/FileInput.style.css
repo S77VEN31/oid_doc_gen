@@ -1,53 +1,30 @@
-/* FileInput.style.css */
-/* Customize the appearance of the file input button */
-input[type="file"] {
-    display: none; /* Hide the default file input button */
-  }
-  
+input[type='file'] {
+  display: none; 
+}
 
+.label-button {
+  display: flex;
+  text-align: center;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  font-size: xx-large;
+  padding: 40px 40px;
+  color: var(--secondary-green);
+  border: none;
+  border-radius: 8px;
+  transition: 0.5s;
+  background-color: var(--primary-green);
+  cursor: pointer;
+}
+.label-button:hover {
+  background-color: var(--secondary-green);
+  box-shadow: 0 0 0 5px var(--primary-green-shadow);
+  color: var(--white);
+  transition: 0.5s;
+}
 
-  /* Style the custom button */
-  .label-button {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 8px;
-    padding: 10px 10px;
-    color: var(--secondary-green);
-    border: none;
-    border-radius: 8px;
-    transition: 0.5s;
-    background-color: var(--primary-green);
-    cursor: pointer;
-
-  }
-  .label-button:hover {
-    background-color: var(--secondary-green);
-    box-shadow: 0 0 0 5px var(--primary-green-shadow);
-    color: var(--white);
-    transition: 0.5s;
-  }
-  
-  /* Style the file name display */
-  .file-name {
-    margin-top: 8px;
-  }
-  
-
-  @keyframes buttonSlide {
-    0% {
-      opacity: 0;
-      transform: translateY(100%);
-    }
-    100% {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-  
-  .button-render-animation {
-    animation-name: buttonSlide;
-    animation-duration: 0.5s;
-    animation-fill-mode: both;
-  }
-  
+.file-name {
+  margin-top: 8px;
+}

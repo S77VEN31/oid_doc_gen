@@ -4,6 +4,7 @@ import NavBarMenu from './components/NavBars/NavBarMenu/NavBarMenu';
 import './globals.css';
 // Fonts
 import { Inter } from 'next/font/google';
+import '@fortawesome/fontawesome-svg-core/styles.css';
 
 const inter = Inter({ subsets: ['latin'] });
 

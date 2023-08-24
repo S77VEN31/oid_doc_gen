@@ -1,0 +1,28 @@
+.ABOUT-PAGE {
+    display: flex;
+    overflow-y: auto;
+    overflow-x: hidden;
+    flex-direction: column;
+    height: max-content;
+    gap: 30px;
+    flex: 1;
+    padding: 30px;
+  }
+
+  @keyframes buttonSlide {
+    0% {
+      opacity: 0;
+      transform: translateY(100%);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .ABOUT-PAGE .button-render-animation {
+    animation-name: buttonSlide;
+    animation-duration: 0.5s;
+    animation-fill-mode: both;
+  }
+  
