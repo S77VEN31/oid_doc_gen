@@ -14,6 +14,7 @@ interface TreeNode {
   name: string;
   oid: string;
   class: string;
+  description: string;
   children: TreeNode[];
 }
 
@@ -29,6 +30,7 @@ const DropdownTable: React.FC<DropdownTableProps> = ({ treeData }) => {
           <th>Name</th>
           <th>OID</th>
           <th>Class</th>
+          <th>Description</th>
         </tr>
       </thead>
       <tbody>
@@ -79,6 +81,9 @@ const TableRow: React.FC<TableRowProps> = ({ item }) => {
         </td>
         <td>
           <div className="row-item">{item.class}</div>
+        </td>
+        <td>
+          <div className="row-item">{item.description}</div>
         </td>
       </tr>
       {isExpanded && item.children.length > 0 && (

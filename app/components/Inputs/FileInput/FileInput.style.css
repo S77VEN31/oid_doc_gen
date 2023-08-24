@@ -33,3 +33,21 @@ input[type="file"] {
     margin-top: 8px;
   }
   
+
+  @keyframes buttonSlide {
+    0% {
+      opacity: 0;
+      transform: translateY(100%);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .button-render-animation {
+    animation-name: buttonSlide;
+    animation-duration: 0.5s;
+    animation-fill-mode: both;
+  }
+  
