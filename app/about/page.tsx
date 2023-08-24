@@ -43,7 +43,9 @@ export default function About(): JSX.Element {
 
   const downloadFile = (fileName: string): void => {
     downloadMibDocs(fileName)
-      .then((response) => {})
+      .then((response) => {
+        console.log(response);
+      })
       .catch((error) => {
         console.log(error);
       });

@@ -1,0 +1,119 @@
+/* Filter Component Styles */
+
+/* Container styles */
+.filter-container {
+    display: flex;
+    gap: 16px;
+   flex-direction: row;
+  }
+  
+  .filter-input-container {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+   
+    align-items: center;
+  }
+  
+  .filter-glass-and-search {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  
+  /* Input styles */
+  .filter-input {
+    font-size: 100%;
+    padding: 0.4em;
+    padding-left: 16px;
+    outline: none;
+    border: 2px solid var(--disabled-gray-soft);
+    background-color: transparent;
+    border-radius: 20px;
+    transition: flex 0.3s ease-in-out, box-shadow 0.3s;
+    box-shadow: none;
+    flex: 0.5;
+  }
+  
+  .filter-input:focus {
+    border-color: var(--primary-blue);
+    box-shadow: 0 0 0 5px var(--primary-blue-shadow);
+    transition: 0.3s;
+  }
+  
+  .filter-input-small {
+    flex: 0.8;
+  }
+  
+  .filter-search-label {
+    position: fixed;
+    padding: 0.9em;
+    pointer-events: none;
+    transition: all 0.3s ease;
+    color: var(--white);
+    transform-origin: top left;
+  }
+  
+  .filter-input:valid + .filter-search-label {
+    display: none;
+  }
+  
+  .filter-button-render-animation {
+    animation-name: buttonSlide;
+    animation-duration: 0.5s;
+    animation-fill-mode: both;
+  }
+  
+  .filter-search-button {
+    flex: 0.2;
+  }
+  
+  /* Dropdown styles */
+  .filter-dropdown {
+    display: flex;
+    justify-content: space-between;
+    appearance: none;
+    border: none;
+    outline: none;
+    box-shadow: none;
+    gap: 8px;
+    padding: 10px 10px;
+    background-color: var(--secondary-blue);
+    color: var(--primary-blue);
+    border-radius: 8px;
+    transition: 0.5s;
+  }
+  
+  .filter-dropdown select:checked {
+    background-color: var(--secondary-blue);
+    color: var(--primary-blue);
+    border: none;
+    outline: none;
+  }
+  
+  .filter-dropdown:hover {
+    background-color: var(--primary-blue);
+    box-shadow: 0 0 0 5px var(--primary-blue-shadow);
+    color: var(--white);
+    transition: 0.5s;
+  }
+  
+  /* Option styles */
+  .filter-dropdown option {
+    background-color: var(--white);
+    color: var(--primary-blue);
+    border: 1px solid var(--primary-blue);
+    border-radius: 8px;
+    padding: 8px;
+    transition: 0.3s;
+  }
+  
+  .filter-dropdown option:hover {
+    background-color: var(--primary-blue);
+    color: var(--white);
+    transition: 0.3s;
+  }
+
+
+  
+  

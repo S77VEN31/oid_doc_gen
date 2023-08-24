@@ -13,11 +13,13 @@ const FileInput = ({
   setIsProcesed,
   setData,
 }): JSX.Element => {
-  const uploadFile = (file: File): void => {
-    uploadMib(file)
-      .then(async (response) => {
+  const uploadFile = async (file: File): Promise<void> => {
+    return uploadMib(file)
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
         setIsProcesed(true);
-        const data = await response.json();
         setData(data);
       })
       .catch((error) => {
