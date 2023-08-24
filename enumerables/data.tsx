@@ -7,6 +7,8 @@ export const treeData = {
       name: 'hpeNetworking',
       oid: '1.3.6.1.4.1.47196.4',
       class: 'moduleidentity',
+      description:
+        'esto es un test aaaaaaaaaa aaaaaaaaaa aaaaaaaaaa aaaaaaaaaa aaaaaaaaaa',
       children: [
         {
           name: 'reservedhpeNetworking',
