@@ -1,49 +1,80 @@
 'use client';
-import React, { useState } from 'react';
+// React
+import React, { ReactNode, useState, useEffect } from 'react';
+// Styles
+import './FileInput.style.css';
+// Icons
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFile } from '@fortawesome/free-solid-svg-icons';
-import './FileInput.style.css';
+// Components
 import IconButton from '../../Buttons/IconButton/IconButton';
-const FileInput = ({}) => {
-  const [selectedFile, setSelectedFile] = useState(null);
-  const [isProcesed, setIsProcesed] = useState(false);
+import NodeTree from '../../NodeTree/NodeTree';
+import DropdownTable from '../../Tables/DropdownTable/DropdownTable';
+import ModalDisplayer from '../../ModalLayout/ModalDisplayer/ModalDisplayer';
+import StandardModal from '../../ModalLayout/StandardModal/StandardModal';
+// API
+import uploadMib from '../../../utils/upload';
+import downloadMibDocs from '../../../utils/download';
 
-  const handleFileChange = (event) => {
-    const file = event.target.files[0]; // Get the first selected file
-    setSelectedFile(file);
+interface ModalContent {
+  name: string;
+  component: ReactNode;
+}
+
+const FileInput = (): JSX.Element => {
+  const [selectedFile, setSelectedFile] = useState<File | null>(null);
+  const [isProcesed, setIsProcesed] = useState(false);
+  const [data, setData] = useState<any | null>(null);
+  const [modal, setModal] = useState(false);
+  const [modalContent, setModalContent] = useState<ModalContent[] | null>(null);
+  useEffect(() => {
+    if (data) {
+      setModalContent([
+        { name: 'NodeTree', component: <NodeTree treeData={data.tree} /> },
+        {
+          name: 'DropdownTable',
+          component: <DropdownTable treeData={[data.tree]} />,
+        },
+      ]);
+    }
+  }, [data]);
+
+  const uploadFile = (file: File): void => {
+    uploadMib(file)
+      .then(async (response) => {
+        setIsProcesed(true);
+        const data = await response.json();
+        setData(data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
-  async function submitHandler() {
-    const formData = new FormData();
-    formData.append('file', selectedFile);
+  const downloadFile = (fileName: string): void => {
+    downloadMibDocs(fileName)
+      .then((response) => {})
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
-    const response = await fetch('http://127.0.0.1:5000/upload_mib', {
-      method: 'POST',
-      body: formData,
-    });
-
-    if (response.ok) {
-      setIsProcesed(true);
-      console.log('File uploaded successfully');
-    } else {
-      console.log('Error uploading file');
+  const handleFileChange = (
+    event: React.ChangeEvent<HTMLInputElement>,
+  ): void => {
+    const file: File = event.target.files![0];
+    if (file) {
+      setSelectedFile(file);
+      uploadFile(file);
     }
-  }
+  };
 
-  async function downloadPDF(name) {
-    try {
-      // Remove file extension
-      const fileNameWithoutExtension = name.replace(/\..+$/, '');
-      const response = await fetch(
-        `http://127.0.0.1:5000/pdf/${fileNameWithoutExtension}`,
-      );
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
-      }
-    } catch (error) {
-      console.error('Error downloading PDF:', error);
+  const handleFileDownload = (): void => {
+    const fileName: string = selectedFile!.name;
+    if (fileName) {
+      downloadFile(fileName);
     }
-  }
+  };
 
   return (
     <div>
@@ -53,20 +84,32 @@ const FileInput = ({}) => {
           : 'Select an MIB File'}
         <FontAwesomeIcon icon={faFile} />
       </label>
-      <input type="file" id="fileInput" onChange={handleFileChange} />
-      {selectedFile && (
-        <IconButton
-          buttonClassname="button-render-animation"
-          buttonText="Submit"
-          handleOnClick={submitHandler}
-        ></IconButton>
-      )}
+      <input
+        accept=".my,.mib,.zip"
+        type="file"
+        id="fileInput"
+        onChange={handleFileChange}
+      />
       {isProcesed && (
         <IconButton
-          buttonClassname="button-render-animation "
+          buttonClassname="button-render-animation"
           buttonText="Download"
-          handleOnClick={() => downloadPDF(selectedFile.name)}
+          handleOnClick={handleFileDownload}
         ></IconButton>
+      )}
+      {data && (
+        <IconButton
+          buttonClassname="button-render-animation"
+          buttonText="Show Tree"
+          handleOnClick={() => {
+            setModal(true);
+          }}
+        ></IconButton>
+      )}
+      {modal && (
+        <ModalDisplayer setModal={setModal}>
+          <StandardModal>{modalContent}</StandardModal>
+        </ModalDisplayer>
       )}
     </div>
   );

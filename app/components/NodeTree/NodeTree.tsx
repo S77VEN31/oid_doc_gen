@@ -164,7 +164,7 @@ export default function NodeTree({ treeData }) {
             className: 'node',
             onClick: handleClick,
           }}
-          margins={{ top: 20, bottom: 20, left: 20, right: 200 }}
+          margins={{ top: 20, bottom: 20, left: 20, right: 300 }}
         />
       </div>
     </div>

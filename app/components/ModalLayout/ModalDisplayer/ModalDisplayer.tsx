@@ -12,13 +12,11 @@ import './ModalDisplayer.style.css';
 interface ModalDisplayerProps {
   children: ReactNode;
   setModal: (open: boolean) => void;
-  setSelectedRow: (open: number | null) => void;
 }
 
 const ModalDisplayer: React.FC<ModalDisplayerProps> = ({
   children,
   setModal,
-  setSelectedRow,
 }) => {
   const menuRef = useRef<HTMLDivElement | null>(null);
 
@@ -39,7 +37,6 @@ const ModalDisplayer: React.FC<ModalDisplayerProps> = ({
       menuRef.current.classList.add('hide-animation');
       setTimeout(() => {
         setModal(false);
-        setSelectedRow(null);
       }, 300);
     }
   };

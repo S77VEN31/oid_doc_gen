@@ -15,7 +15,7 @@ interface ModalContent {
 }
 
 interface StandardModalProps {
-  children: ModalContent[];
+  children: ModalContent[] | null;
   handleCloseModal?: () => void;
 }
 
@@ -36,7 +36,7 @@ const StandardModal: React.FC<StandardModalProps> = ({
           handleOnClick={() => handleCloseModalButton()}
           icon={<FontAwesomeIcon icon={faTimes} />}
         />
-        {children.map((content, index) => (
+        {children!.map((content, index) => (
           <IconButton
             buttonText={content.name}
             key={index}
@@ -46,7 +46,7 @@ const StandardModal: React.FC<StandardModalProps> = ({
           />
         ))}
       </div>
-      {children[child].component}
+      {children![child].component}
     </div>
   );
 };
