@@ -26,7 +26,7 @@ const SearchBar: React.FC = () => {
         onChange={handleInputChange}
         value={inputValue}
         required
-        placeholder="Search"
+        placeholder="Search terms in the MIB data..."
         autoComplete="off"
       />
       {inputValue && (
