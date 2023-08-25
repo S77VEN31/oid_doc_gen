@@ -9,13 +9,14 @@ import { faSearch } from '@fortawesome/free-solid-svg-icons';
 // Components
 import IconButton from '../../Buttons/IconButton/IconButton';
 
-const SearchBar: React.FC = ({ setTerm }) => {
+const SearchBar: React.FC = ({ setTerm, setInput }) => {
   const [inputValue, setInputValue] = useState('');
 
   const handleInputChange = (
     event: React.ChangeEvent<HTMLInputElement>,
   ): void => {
     setInputValue(event.target.value);
+    setInput(event.target.value);
   };
 
   return (

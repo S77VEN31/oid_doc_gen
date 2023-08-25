@@ -10,8 +10,8 @@ export const navBarOptions = [
     key: 'search',
   },
   {
-    children: 'about',
-    href: '/about',
-    key: 'about',
+    children: 'download',
+    href: '/download',
+    key: 'download',
   },
 ];

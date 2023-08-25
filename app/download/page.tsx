@@ -2,7 +2,7 @@
 // React
 import React, { ReactNode, useState, useEffect } from 'react';
 // Styles
-import './About.style.css';
+import './Download.style.css';
 // Components
 import FileInput from '../components/Inputs/FileInput/FileInput';
 import IconButton from '../components/Buttons/IconButton/IconButton';
@@ -22,7 +22,7 @@ interface ModalContent {
   component: ReactNode;
 }
 
-export default function About(): JSX.Element {
+export default function Download(): JSX.Element {
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const [isProcesed, setIsProcesed] = useState(false);
   const [data, setData] = useState<any | null>(null);
@@ -41,25 +41,33 @@ export default function About(): JSX.Element {
     }
   }, [data]);
 
-  const downloadFile = (fileName: string): void => {
-    downloadMibDocs(fileName)
-      .then((response) => {
-        console.log(response);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
-
-  const handleFileDownload = (): void => {
-    const fileName: string = selectedFile!.name;
-    if (fileName) {
-      downloadFile(fileName);
+  const downloadFile = async (): Promise<void> => {
+    try {
+      const response = await downloadMibDocs();
+      if (response.ok) {
+        const blob = await response.blob();
+        const blobUrl = URL.createObjectURL(blob);
+        const downloadLink = document.createElement('a');
+        downloadLink.href = blobUrl;
+        downloadLink.download = 'filename.pdf';
+        document.body.appendChild(downloadLink);
+        downloadLink.click();
+        document.body.removeChild(downloadLink);
+        URL.revokeObjectURL(blobUrl);
+      } else {
+        console.log('Response error');
+      }
+    } catch (error) {
+      console.log(error);
     }
   };
 
+  const handleFileDownload = (): void => {
+    downloadFile();
+  };
+
   return (
-    <div className="ABOUT-PAGE">
+    <div className="DOWNLOAD-PAGE">
       <FileInput
         setData={setData}
         setSelectedFile={setSelectedFile}

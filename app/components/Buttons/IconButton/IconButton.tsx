@@ -23,11 +23,7 @@ const IconButton: React.FC<SearchButtonProps> = ({
     <button
       disabled={disabled}
       onClick={handleOnClick}
-      className={classes([
-        'button',
-        disabled ? 'disabled' : 'enabled',
-        buttonClassname,
-      ])}
+      className={classes(['button', buttonClassname])}
     >
       {icon}
       {buttonText}

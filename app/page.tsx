@@ -20,6 +20,7 @@ export default function Home(): JSX.Element {
   const [vendor, setVendor] = useState<number>(0);
   const [term, setTerm] = useState<string>('');
   const [local, setLocal] = useState<boolean>(false);
+  const [input, setInput] = useState(null);
 
   useEffect(() => {
     async function fetchAndSetVendors(): Promise<void> {
@@ -67,15 +68,16 @@ export default function Home(): JSX.Element {
 
   return (
     <div className="HOME-PAGE">
-      <SearchBar setData={setData} setTerm={setTerm} />
-      <div className="filters-container">
-        <Filter vendors={vendors} setVendor={setVendor} vendor={vendor} />
-        <IconButton
-          disabled={term === '' ? true : false}
-          handleOnClick={() => setLocal(!local)}
-          buttonText={local ? 'Local: yes' : 'Local: no'}
-        ></IconButton>
-      </div>
+      <SearchBar setData={setData} setTerm={setTerm} setInput={setInput} />
+      {input && term ? (
+        <div className="filters-container filters-container-animation ">
+          <Filter vendors={vendors} setVendor={setVendor} vendor={vendor} />
+          <IconButton
+            handleOnClick={() => setLocal(!local)}
+            buttonText={local ? 'Local: yes' : 'Local: no'}
+          ></IconButton>
+        </div>
+      ) : null}
 
       <div className="main-container">
         {data ? (

@@ -1,4 +1,4 @@
-.ABOUT-PAGE {
+.DOWNLOAD-PAGE {
   display: flex;
   flex-direction: column;
   gap: 30px;
@@ -17,18 +17,18 @@
   }
 }
 
-.ABOUT-PAGE .button-render-animation {
+.DOWNLOAD-PAGE .button-render-animation {
   animation-name: buttonSlide;
   animation-duration: 0.5s;
   animation-fill-mode: both;
 }
 
-.ABOUT-PAGE .graphics-button {
+.DOWNLOAD-PAGE .graphics-button {
   font-size: xx-large;
   padding: 5%;
 }
 
-.ABOUT-PAGE .download-button {
+.DOWNLOAD-PAGE .download-button {
   font-size: xx-large;
   padding: 5%;
 }
