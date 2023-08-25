@@ -4,21 +4,36 @@
   flex-direction: column;
   gap: 15px;
   flex: 1;
-  overflow-y: auto;
   overflow-x: hidden;
 }
 
 .main-container{
-  overflow: hidden;
+  
   padding-top: 20px;
   padding-bottom: 20px;
     padding-left: 40px;
     padding-right: 40px;
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+   
 }
 
-@media (max-width: 768px) {
-  .HOME-PAGE  {
-    overflow-y: auto;
-  }
+.null-content-container {
+  display: flex;
+  flex: 1;
+  align-items: center;
 }
+
+.null-content {
+  height: 5%;
+ display: flex;
+ flex: 1;
+ flex-direction: column;
+ font-size: xx-large;
+ text-align: center;
+ color: var(--disabled-gray-strong)
+}
+
+
 

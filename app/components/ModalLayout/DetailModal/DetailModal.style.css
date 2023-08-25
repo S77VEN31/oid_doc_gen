@@ -1,10 +1,8 @@
-.content-container {
+.detail-content-container {
   position: relative;
   flex-direction: column;
   display: flex;
   gap: 8px;
-  width: 90%;
-  height: 90%;
   background-color: var(--white);
   border-radius: 10px;
   box-shadow: 0 0 10px var(--black);
@@ -12,8 +10,25 @@
   padding: 16px 16px 16px 16px;
 }
 
-.buttons-container {
+.detail-buttons-container {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  justify-content: space-between;
+}
+
+.info-container {
   display: flex;
   flex-direction: row;
   gap: 8px;
 }
+
+.close-button {
+  flex: none
+}
+
+.key {
+  color: var(--primary-blue);
+  text-transform: uppercase;
+}
+

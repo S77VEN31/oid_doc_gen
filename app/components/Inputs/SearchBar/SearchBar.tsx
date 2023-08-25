@@ -8,22 +8,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 // Components
 import IconButton from '../../Buttons/IconButton/IconButton';
-import search from '@/app/utils/search';
-const SearchBar: React.FC = ({ setData }) => {
+
+const SearchBar: React.FC = ({ handleOnClick }) => {
   const [inputValue, setInputValue] = useState('');
-  const searchTerm = async (term) => {
-    return search(term)
-      .then((response) => {
-        return response.json();
-      })
-      .then((data) => {
-        setData(data);
-        console.log(data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
+
   const handleInputChange = (
     event: React.ChangeEvent<HTMLInputElement>,
   ): void => {
@@ -45,7 +33,7 @@ const SearchBar: React.FC = ({ setData }) => {
         <IconButton
           buttonClassname="button-render-animation search-button"
           handleOnClick={() => {
-            searchTerm(inputValue);
+            handleOnClick(inputValue);
           }}
           buttonText="Search"
           icon={<FontAwesomeIcon icon={faSearch} />}

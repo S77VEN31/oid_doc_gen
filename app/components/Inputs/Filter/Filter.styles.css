@@ -5,13 +5,14 @@
     display: flex;
     gap: 16px;
    flex-direction: row;
+   flex-wrap: wrap;
   }
   
   .filter-input-container {
     display: flex;
     gap: 16px;
     flex-wrap: wrap;
-   
+    
     align-items: center;
   }
   

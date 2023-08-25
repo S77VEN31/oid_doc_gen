@@ -4,7 +4,6 @@ table {
   border-collapse: collapse;
 }
 
-
 .oid-table th,
 .oid-table td {
   border: 1px solid #ccc;
@@ -29,7 +28,7 @@ table {
 }
 
 .active {
-  background-color: var(--primary-blue)
+  background-color: var(--primary-blue);
 }
 
 .row:hover {
@@ -46,7 +45,17 @@ table {
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
+  flex: 1;
+  gap: 20px;
 }
 
+.row-name-oid {
+  display: flex;
+  flex-direction: column;
+  flex: 0.5;
+}
 
-
+.row-description {
+  flex: 1;
+  display: flex;
+}

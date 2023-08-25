@@ -69,7 +69,7 @@ export default function About(): JSX.Element {
       {data && (
         <IconButton
           icon={<FontAwesomeIcon icon={faSitemap} />}
-          buttonClassname="button-render-animation"
+          buttonClassname="button-render-animation graphics-button"
           buttonText="Show graphics"
           handleOnClick={() => {
             setModal(true);
@@ -79,7 +79,7 @@ export default function About(): JSX.Element {
       {isProcesed && (
         <IconButton
           icon={<FontAwesomeIcon icon={faDownload} />}
-          buttonClassname="button-render-animation"
+          buttonClassname="button-render-animation download-button"
           buttonText="Download"
           handleOnClick={handleFileDownload}
         ></IconButton>

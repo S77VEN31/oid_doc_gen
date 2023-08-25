@@ -4,13 +4,14 @@ import React, { useState, useRef } from 'react';
 // Styles
 import './OIDTable.style.css';
 
-const OIDTable: React.FC = ({ data, setModal }) => {
+const OIDTable: React.FC = ({ data, setModal, setModalData }) => {
   const [selectedRow, setSelectedRow] = useState<number | null>(null);
 
   const tableRef = useRef(null);
 
-  const handleRowClick = (rowId: number): void => {
-    setSelectedRow(rowId);
+  const handleRowClick = (index: number): void => {
+    setSelectedRow(index);
+    setModalData(data[index]);
     setModal(true);
   };
 
@@ -27,10 +28,25 @@ const OIDTable: React.FC = ({ data, setModal }) => {
               >
                 <td className="row-container">
                   <div className="row-name-oid">
-                    <div>{item.name}</div>
-                    <div>{item.oid}</div>
+                    <div>
+                      <strong>NAME: </strong>
+                      {item.name}
+                    </div>
+                    <div>
+                      <strong>OID: </strong>
+                      {item.oid}
+                    </div>
+                    <div>
+                      <strong>TYPE: </strong>
+                      {item.nodetype}
+                    </div>
                   </div>
-                  <div>{item.description}</div>
+                  <div className="row-description">
+                    <div>
+                      <strong>DESCRIPTION: </strong>
+                      {item.description}
+                    </div>
+                  </div>
                 </td>
               </tr>
             ))}
