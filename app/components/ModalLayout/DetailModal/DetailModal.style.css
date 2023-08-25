@@ -1,0 +1,19 @@
+.content-container {
+  position: relative;
+  flex-direction: column;
+  display: flex;
+  gap: 8px;
+  width: 90%;
+  height: 90%;
+  background-color: var(--white);
+  border-radius: 10px;
+  box-shadow: 0 0 10px var(--black);
+  overflow-y: scroll;
+  padding: 16px 16px 16px 16px;
+}
+
+.buttons-container {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+}

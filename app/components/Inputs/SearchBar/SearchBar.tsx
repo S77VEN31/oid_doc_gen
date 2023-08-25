@@ -9,7 +9,7 @@ import { faSearch } from '@fortawesome/free-solid-svg-icons';
 // Components
 import IconButton from '../../Buttons/IconButton/IconButton';
 import search from '@/app/utils/search';
-const SearchBar: React.FC = ({}) => {
+const SearchBar: React.FC = ({ setData }) => {
   const [inputValue, setInputValue] = useState('');
   const searchTerm = async (term) => {
     return search(term)
@@ -17,6 +17,7 @@ const SearchBar: React.FC = ({}) => {
         return response.json();
       })
       .then((data) => {
+        setData(data);
         console.log(data);
       })
       .catch((error) => {

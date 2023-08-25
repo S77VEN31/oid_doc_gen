@@ -4,6 +4,7 @@ table {
   border-collapse: collapse;
 }
 
+
 .oid-table th,
 .oid-table td {
   border: 1px solid #ccc;
@@ -38,3 +39,14 @@ table {
   box-shadow: 0 0 10px var(--black);
   transform: scale(1.03);
 }
+
+.row-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+
+

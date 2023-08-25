@@ -1,0 +1,23 @@
+.HOME-PAGE {
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  flex: 1;
+  overflow-y: auto;
+}
+
+.main-container{
+  overflow: hidden;
+  padding-top: 20px;
+  padding-bottom: 20px;
+    padding-left: 40px;
+    padding-right: 40px;
+}
+
+@media (max-width: 768px) {
+  .HOME-PAGE  {
+    overflow-y: auto;
+  }
+}
+

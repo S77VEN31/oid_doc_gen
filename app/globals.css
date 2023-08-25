@@ -2,8 +2,7 @@ body {
   display: flex;
   flex-direction: column;
   flex: 1;
-  max-height: 100vh;
-  min-height: 100vh;
+  
 }
 
 :root {
@@ -41,14 +40,8 @@ body {
   background: transparent;
 }
 
-.HOME-PAGE {
-  padding: 30px;
-  display: flex;
-  flex-direction: column;
-  gap: 30px;
-  flex: 1;
-  overflow-y: auto;
-  overflow-x: hidden;
-}
+
+
+
 
 

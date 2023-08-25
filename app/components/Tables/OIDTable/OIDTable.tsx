@@ -4,38 +4,34 @@ import React, { useState, useRef } from 'react';
 // Styles
 import './OIDTable.style.css';
 
-const data = [
-  { id: 1, name: 'Item 1', description: 'Description for Item 1' },
-  { id: 2, name: 'Item 2', description: 'Description for Item 2' },
-  { id: 3, name: 'Item 3', description: 'Description for Item 3' },
-];
-
-const OIDTable: React.FC = () => {
+const OIDTable: React.FC = ({ data, setModal }) => {
   const [selectedRow, setSelectedRow] = useState<number | null>(null);
 
   const tableRef = useRef(null);
 
   const handleRowClick = (rowId: number): void => {
     setSelectedRow(rowId);
+    setModal(true);
   };
 
   return (
     <div className="table-with-side-menu">
       <div ref={tableRef} className="table-container">
         <table className="oid-table">
-          <thead>
-            <tr>
-              <th>Resultados</th>
-            </tr>
-          </thead>
-          <tbody>
-            {data.map((item) => (
+          <tbody className="oid-table-body">
+            {data.map((item, index) => (
               <tr
-                className={`row ${selectedRow === item.id && 'active'}`}
+                className={`row ${selectedRow === index && 'active'}`}
                 key={item.id}
-                onClick={() => handleRowClick(item.id)}
+                onClick={() => handleRowClick(index)}
               >
-                <td>{item.name}</td>
+                <td className="row-container">
+                  <div className="row-name-oid">
+                    <div>{item.name}</div>
+                    <div>{item.oid}</div>
+                  </div>
+                  <div>{item.description}</div>
+                </td>
               </tr>
             ))}
           </tbody>
