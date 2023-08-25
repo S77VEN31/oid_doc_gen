@@ -23,12 +23,12 @@
   animation-fill-mode: both;
 }
 
-.graphics-button {
+.ABOUT-PAGE .graphics-button {
   font-size: xx-large;
-  padding: 40px 40px;
+  padding: 5%;
 }
 
-.download-button {
+.ABOUT-PAGE .download-button {
   font-size: xx-large;
-  padding: 40px 40px;
+  padding: 5%;
 }

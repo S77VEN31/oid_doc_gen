@@ -4,32 +4,30 @@ import React, { useState, ChangeEvent } from 'react';
 import './Filter.styles.css';
 
 interface FilterProps {
-  marcas: string[];
-  onFiltroCambiado: (marca: string) => void;
+  vendors: string[];
+  setVendor: (vendor: string) => void;
 }
 
-const Filter: React.FC<FilterProps> = ({ marcas, onFiltroCambiado }) => {
-  const [filtro, setFiltro] = useState<string>('');
-  const [marcaSeleccionada, setMarcaSeleccionada] = useState<string>('');
+const Filter: React.FC<FilterProps> = ({ vendors, setVendor }) => {
+  const [text, setText] = useState<string>('');
+  const [filter, setFilter] = useState<string>('');
 
-  const opcionesFiltradas = marcas.filter((marca) =>
-    marca.toLowerCase().includes(filtro.toLowerCase()),
+  const options = vendors.filter((vendor) =>
+    vendor.toLowerCase().includes(text.toLowerCase()),
   );
 
-  const handleChangeFiltro = (event: ChangeEvent<HTMLInputElement>): void => {
-    const nuevoFiltro = event.target.value;
-    setFiltro(nuevoFiltro);
-    setMarcaSeleccionada('');
-    onFiltroCambiado('');
-    const primeraOpcionFiltrada =
-      opcionesFiltradas.length > 0 ? opcionesFiltradas[0] : '';
-    setMarcaSeleccionada(primeraOpcionFiltrada);
-    onFiltroCambiado(primeraOpcionFiltrada);
+  const handleChangeText = (event: ChangeEvent<HTMLInputElement>): void => {
+    const newText = event.target.value;
+    setText(newText);
+    setFilter('');
+    const first = options.length > 0 ? options[0] : '';
+    setFilter(first);
+    setVendor(first);
   };
 
-  const handleSeleccionarMarca = (marca: string): void => {
-    setMarcaSeleccionada(marca);
-    onFiltroCambiado(marca);
+  const handleSelectVendor = (vendor: string): void => {
+    setFilter(vendor);
+    setVendor(vendor);
   };
 
   return (
@@ -38,20 +36,20 @@ const Filter: React.FC<FilterProps> = ({ marcas, onFiltroCambiado }) => {
         <input
           type="text"
           className="filter-input"
-          placeholder="Buscar marca..."
-          value={filtro}
-          onChange={handleChangeFiltro}
+          placeholder="Buscar vendor..."
+          value={text}
+          onChange={handleChangeText}
         />
       </div>
       <select
         className="filter-dropdown"
-        value={marcaSeleccionada}
-        onChange={(event) => handleSeleccionarMarca(event.target.value)}
+        value={filter}
+        onChange={(event) => handleSelectVendor(event.target.value)}
       >
-        <option value="">Todas las marcas</option>
-        {opcionesFiltradas.map((marca) => (
-          <option key={marca} value={marca}>
-            {marca}
+        <option value="">All vendors</option>
+        {options.map((vendor) => (
+          <option key={vendor} value={vendor}>
+            {vendor}
           </option>
         ))}
       </select>

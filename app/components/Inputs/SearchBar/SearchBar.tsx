@@ -9,7 +9,7 @@ import { faSearch } from '@fortawesome/free-solid-svg-icons';
 // Components
 import IconButton from '../../Buttons/IconButton/IconButton';
 
-const SearchBar: React.FC = ({ handleOnClick }) => {
+const SearchBar: React.FC = ({ setTerm }) => {
   const [inputValue, setInputValue] = useState('');
 
   const handleInputChange = (
@@ -33,7 +33,7 @@ const SearchBar: React.FC = ({ handleOnClick }) => {
         <IconButton
           buttonClassname="button-render-animation search-button"
           handleOnClick={() => {
-            handleOnClick(inputValue);
+            setTerm(inputValue);
           }}
           buttonText="Search"
           icon={<FontAwesomeIcon icon={faSearch} />}

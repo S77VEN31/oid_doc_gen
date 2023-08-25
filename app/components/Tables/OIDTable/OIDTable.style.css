@@ -4,6 +4,16 @@ table {
   border-collapse: collapse;
 }
 
+@keyframes menuShowIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+
 .oid-table th,
 .oid-table td {
   border: 1px solid #ccc;
@@ -15,6 +25,13 @@ table {
   gap: 10px;
   flex-wrap: wrap;
 }
+
+.table-with-side-menu  .render-animation {
+  animation-name: menuShowIn;
+  animation-duration: 0.3s;
+  animation-fill-mode: both;
+}
+
 
 .table-container {
   flex: 1;

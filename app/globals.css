@@ -1,9 +1,8 @@
 body {
   display: flex;
   flex-direction: column;
-  
- 
- 
+  overflow-x: hidden;
+
 }
 
 :root {
@@ -20,8 +19,13 @@ body {
 }
 
 /* Hide the default scrollbar */
-::-webkit-scrollbar {
+body ::-webkit-scrollbar {
   width: 8px;
+  background-color: transparent;
+
+}
+::-webkit-scrollbar {
+  width: 0px;
   background-color: transparent;
 }
 

@@ -25,6 +25,12 @@
   align-items: center;
 }
 
+.filters-container {
+ display: flex;
+ flex-direction: row;
+ justify-content: space-between;
+}
+
 .null-content {
   height: 5%;
  display: flex;

@@ -46,7 +46,9 @@ const DetailModal: React.FC<StandardModalProps> = ({
       {Object.entries(data).map(([key, value]) => (
         <div className="info-container" key={key}>
           <div className="key">{key + ':'}</div>
-          <div>{Array.isArray(value) ? value.length : value}</div>
+          <div className="value">
+            {Array.isArray(value) ? value.length : value}
+          </div>
         </div>
       ))}
     </div>

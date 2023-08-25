@@ -1,12 +1,9 @@
 // Components
 'use client';
 import './Home.style.css';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-  faFileCircleXmark,
-  faMagnifyingGlass,
-} from '@fortawesome/free-solid-svg-icons';
+import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import SearchBar from './components/Inputs/SearchBar/SearchBar';
 import OIDTable from './components/Tables/OIDTable/OIDTable';
 import ModalDisplayer from './components/ModalLayout/ModalDisplayer/ModalDisplayer';
@@ -14,12 +11,15 @@ import DetailModal from './components/ModalLayout/DetailModal/DetailModal';
 import search from './utils/search';
 import fetchVendors from './utils/vendors';
 import Filter from './components/Inputs/Filter/Filter';
+import IconButton from './components/Buttons/IconButton/IconButton';
 export default function Home(): JSX.Element {
   const [data, setData] = useState(null);
   const [modalData, setModalData] = useState({});
   const [modal, setModal] = useState(false);
   const [vendors, setVendors] = useState<string[]>([]);
-  const [filtroActual, setFiltroActual] = useState<string>('');
+  const [vendor, setVendor] = useState<number>(0);
+  const [term, setTerm] = useState<string>('');
+  const [local, setLocal] = useState<boolean>(false);
 
   useEffect(() => {
     async function fetchAndSetVendors(): Promise<void> {
@@ -28,10 +28,14 @@ export default function Home(): JSX.Element {
     fetchAndSetVendors();
   }, []);
 
-  const handleFiltroCambiado = (nuevaMarca: string): void => {
-    setFiltroActual(nuevaMarca);
-    // Additional actions based on the new filter can be performed here
-  };
+  const searchInMIBCall = useCallback(async () => {
+    await searchInMIB(term, vendor, local);
+  }, [vendor, term, local]);
+
+  useEffect(() => {
+    searchInMIBCall();
+  }, [searchInMIBCall]);
+
   const getVendors = async (): Promise<string[]> => {
     return fetchVendors()
       .then((response) => {
@@ -47,8 +51,8 @@ export default function Home(): JSX.Element {
       });
   };
 
-  const searchTerm = async (term) => {
-    return search(term)
+  const searchInMIB = async (term, vendor, local) => {
+    return search(term, vendor, local)
       .then((response) => {
         return response.json();
       })
@@ -63,8 +67,15 @@ export default function Home(): JSX.Element {
 
   return (
     <div className="HOME-PAGE">
-      <SearchBar setData={setData} handleOnClick={searchTerm} />
-      <Filter marcas={vendors} onFiltroCambiado={handleFiltroCambiado} />
+      <SearchBar setData={setData} setTerm={setTerm} />
+      <div className="filters-container">
+        <Filter vendors={vendors} setVendor={setVendor} vendor={vendor} />
+        <IconButton
+          handleOnClick={() => setLocal(!local)}
+          buttonText={local ? 'Local: yes' : 'Local: no'}
+        ></IconButton>
+      </div>
+
       <div className="main-container">
         {data ? (
           <OIDTable

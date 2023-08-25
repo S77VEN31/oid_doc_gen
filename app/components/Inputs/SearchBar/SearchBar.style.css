@@ -51,7 +51,7 @@
   }
 }
 
-.button-render-animation {
+.inputGroup .button-render-animation {
   animation-name: buttonSlide;
   animation-duration: 0.5s;
   animation-fill-mode: both;

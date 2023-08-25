@@ -16,7 +16,7 @@ const OIDTable: React.FC = ({ data, setModal, setModalData }) => {
   };
 
   return (
-    <div className="table-with-side-menu">
+    <div className="table-with-side-menu render-animation ">
       <div ref={tableRef} className="table-container">
         <table className="oid-table">
           <tbody className="oid-table-body">

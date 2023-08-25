@@ -1,5 +1,5 @@
 .modal-displayer {
-  position: absolute;
+  position: fixed;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -14,7 +14,7 @@
   background-color: rgba(0, 0, 0, 0.5);
 }
 
-@keyframes menuSlide {
+@keyframes menuShowIn {
   0% {
     opacity: 0;
   }
@@ -24,12 +24,12 @@
 }
 
 .render-animation {
-  animation-name: menuSlide;
+  animation-name: menuShowIn;
   animation-duration: 0.3s;
   animation-fill-mode: both;
 }
 
-@keyframes menuSlideOut {
+@keyframes menuShowOut {
   0% {
     opacity: 1;
   }
@@ -39,7 +39,7 @@
 }
 
 .hide-animation {
-  animation-name: menuSlideOut;
+  animation-name: menuShowOut;
   animation-duration: 0.3s;
   animation-fill-mode: both;
 }
