@@ -8,6 +8,7 @@ interface SearchButtonProps {
   buttonClassname?: string | null;
   icon?: JSX.Element;
   key?: number;
+  disabled?: boolean;
   handleOnClick: () => void;
 }
 
@@ -15,12 +16,18 @@ const IconButton: React.FC<SearchButtonProps> = ({
   buttonText,
   buttonClassname = null,
   icon,
+  disabled = false,
   handleOnClick,
 }) => {
   return (
     <button
+      disabled={disabled}
       onClick={handleOnClick}
-      className={classes(['button', buttonClassname])}
+      className={classes([
+        'button',
+        disabled ? 'disabled' : 'enabled',
+        buttonClassname,
+      ])}
     >
       {icon}
       {buttonText}

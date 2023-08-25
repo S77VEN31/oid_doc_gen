@@ -22,3 +22,12 @@
   background-color: var(--primary-blue);
   color: var(--white);
 }
+
+.disabled {
+  background-color: var(--disabled-gray-medium);
+  color: var(--disabled-gray-strong);
+}
+.enabled {
+  background-color: var(--secondary-blue);
+  color: var(--primary-blue);
+}

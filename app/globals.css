@@ -12,6 +12,7 @@ body {
   --white: #ffffff;
   --disabled-gray-soft: rgb(200, 200, 200);
   --disabled-gray-strong: rgb(100, 100, 100);
+  --disabled-gray-medium: rgb(150, 150, 150);
   --black:rgba(0, 0, 0, 0.5);
   --primary-green: #61CA87;
   --primary-green-shadow: #61CA87;

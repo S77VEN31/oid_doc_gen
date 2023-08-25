@@ -71,6 +71,7 @@ export default function Home(): JSX.Element {
       <div className="filters-container">
         <Filter vendors={vendors} setVendor={setVendor} vendor={vendor} />
         <IconButton
+          disabled={term === '' ? true : false}
           handleOnClick={() => setLocal(!local)}
           buttonText={local ? 'Local: yes' : 'Local: no'}
         ></IconButton>
